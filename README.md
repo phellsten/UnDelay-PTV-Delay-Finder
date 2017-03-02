@@ -1,6 +1,6 @@
 # Road to Nowhere
 
-![logo](phellsten.github.com/INFO30005/templogo.jpg)
+![logo](templogo.png)
 
 
 Workshop 1
