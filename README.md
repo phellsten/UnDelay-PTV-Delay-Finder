@@ -1,6 +1,6 @@
 # Road to Nowhere
 
-*Insert Logo Here*
+![logo](phellsten.github.com/INFO30005/templogo.jpg)
 
 
 Workshop 1
