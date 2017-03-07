@@ -1,3 +1,4 @@
- # Blog Post describing idea ft. mindmaps etc
  
- 2days to go
+#    Blog Post describing idea ft. mindmaps etc 
+ 
+ 2 days to go
