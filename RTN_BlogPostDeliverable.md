@@ -3,15 +3,25 @@
  
 The aim of our project is to explore and attempt to help with the issues of public transport in Melbourne.
 
+It is quite easy to find article upon article complaining about overcrowded transport, faulty myki cards, a lack of Myki Top up machines and endless complaints about AOs.
+
 Nearly every day commuters are faced with delays, late buses and trains, or being plagued by ticket inspectors. This issue is a huge challenge to solve, so our solution will attempt to assist commuters in their daily struggles.
 
-According to the Herald Sun, "Customers made 282 complaints against authorized officers this financial year."
+According to the Herald Sun, "Customers made 282 complaints against authorized officers this financial year." Among these reports were ticket inspectors using overly "heavy handed" approaches at dealing with ticket evading. Which even lead a woman to be "traumatised" by ticket inspectors.
+
+![description](images/blog/week2/heavyhanded.jpg)
 
 When we use public transport in Melbourne, we may often be stressed by running late. Add being hassled and intimidated by ticket inspectors on top of this and for some it may be too much. Being stopped and interrogated by Authorised Officers (AO's) or ticket inspectors can often unnecessarily slow down legitimate paying commuters on their trips.
 
+
 Road To Nowhere will uncover the true problems within Melbourne's public transport system and provide a useful web application to help travellers find the fastest most hassle free route around Melbourne's transport system.
 
+Postgraduate students are also blatently denied concession status despite them still being students. PHD or Masters students do not earn any more money than undergraduate students. How is this fair? This application does not intend to make fair evasion possible but instead help level the playing field.
+
+Road To Nowhere will uncover the true problems within Melbourne's public transport system and provide a useful web application to help travellers.
+
 ![description](images/blog/week2/mindmap.jpg)
+
 
 http://www.dailymail.co.uk/news/article-4248460/Single-mum-traumatised-ticket-inspectors.html
 
@@ -20,3 +30,7 @@ http://www.heraldsun.com.au/news/victoria/ticket-inspectors-intimidating-passeng
 http://mobile.abc.net.au/news/2016-11-17/public-transport-ticket-inspector-complaints-rise-16-per-cent/8030770
 
 http://www.ptua.org.au/melbourne/problem/
+
+https://www.facebook.com/FaresFairPTV/
+
+http://www.theage.com.au/victoria/myki-still-a-disaster-and-public-transport-victoria-is-not-monitoring-it-properly-auditorgeneral-20150610-ghkj77.html
