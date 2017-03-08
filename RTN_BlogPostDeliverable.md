@@ -3,6 +3,8 @@
  
 The aim of our project is to explore and attempt to help with the issues of public transport in Melbourne.
 
+It is quite easy to find article upon article complaining about overcrowded transport, faulty myki cards, a lack of Myki Top up machines and endless complaints about AOs.
+
 Nearly every day commuters are faced with delays, late buses and trains, or being plagued by ticket inspectors. This issue is a huge challenge to solve, so our solution will attempt to assist commuters in their daily struggles.
 
 According to the Herald Sun, "Customers made 282 complaints against authorized officers this financial year." Among these reports were ticket inspectors using overly "heavy handed" approaches at dealing with ticket evading. Which even lead a woman to be "traumatised" by ticket inspectors.
@@ -27,3 +29,5 @@ http://mobile.abc.net.au/news/2016-11-17/public-transport-ticket-inspector-compl
 http://www.ptua.org.au/melbourne/problem/
 
 https://www.facebook.com/FaresFairPTV/
+
+http://www.theage.com.au/victoria/myki-still-a-disaster-and-public-transport-victoria-is-not-monitoring-it-properly-auditorgeneral-20150610-ghkj77.html
