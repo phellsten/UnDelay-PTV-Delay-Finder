@@ -9,6 +9,8 @@ According to the Herald Sun, "Customers made 282 complaints against authorized o
 
 When we use public transport in Melbourne, we may often be stressed by running late. Add being hassled and intimidated by ticket inspectors on top of this and for some it may be too much.
 
+Postgraduate students are also blatently denied concession status despite them still being students. PHD or Masters students do not earn any more money than undergraduate students. How is this fair?
+
 Road To Nowhere will uncover the true problems within Melbourne's public transport system and provide a useful web application to help travellers.
 
 ![description](images/blog/week2/mindmap.jpg)
@@ -20,3 +22,5 @@ http://www.heraldsun.com.au/news/victoria/ticket-inspectors-intimidating-passeng
 http://mobile.abc.net.au/news/2016-11-17/public-transport-ticket-inspector-complaints-rise-16-per-cent/8030770
 
 http://www.ptua.org.au/melbourne/problem/
+
+https://www.facebook.com/FaresFairPTV/
