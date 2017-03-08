@@ -11,7 +11,10 @@ According to the Herald Sun, "Customers made 282 complaints against authorized o
 
 ![description](images/blog/week2/heavyhanded.jpg)
 
-When we use public transport in Melbourne, we may often be stressed by running late. Add being hassled and intimidated by ticket inspectors on top of this and for some it may be too much.
+When we use public transport in Melbourne, we may often be stressed by running late. Add being hassled and intimidated by ticket inspectors on top of this and for some it may be too much. Being stopped and interrogated by Authorised Officers (AO's) or ticket inspectors can often unnecessarily slow down legitimate paying commuters on their trips.
+
+
+Road To Nowhere will uncover the true problems within Melbourne's public transport system and provide a useful web application to help travellers find the fastest most hassle free route around Melbourne's transport system.
 
 Postgraduate students are also blatently denied concession status despite them still being students. PHD or Masters students do not earn any more money than undergraduate students. How is this fair? This application does not intend to make fair evasion possible but instead help level the playing field.
 
