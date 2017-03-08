@@ -11,6 +11,8 @@ When we use public transport in Melbourne, we may often be stressed by running l
 
 Road To Nowhere will uncover the true problems within Melbourne's public transport system and provide a useful web application to help travellers.
 
+![description](images/blog/week2/mindmap.jpg)
+
 http://www.dailymail.co.uk/news/article-4248460/Single-mum-traumatised-ticket-inspectors.html
 http://www.heraldsun.com.au/news/victoria/ticket-inspectors-intimidating-passengers-on-melbournes-trains-and-trams/news-story/28c5dea955bc05cc6a99350235b66e5e
 http://mobile.abc.net.au/news/2016-11-17/public-transport-ticket-inspector-complaints-rise-16-per-cent/8030770
