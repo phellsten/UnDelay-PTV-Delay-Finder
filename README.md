@@ -1,6 +1,6 @@
 # Road to Nowhere
 
-![logo](templogo.png)
+![logo](images/blog/templogo.png)
 
 
 Workshop 1
