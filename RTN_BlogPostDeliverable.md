@@ -45,4 +45,12 @@ For trams, a solution called tramTRACKER currently exists however the scope of t
 
 For trains there are boards at stations which tell you how far a train is away from the station but that information is not readily available to customers online or on a connecting tram for example. This information is also very delayed in reaching customers and only high profile problems or accidents are ever reported.
 
+PTV recommends "checking their website for updates" however this provides only information for every single service and it is difficult to and time consuming to locate information specific to route. Our app will aim to save or favourite a specific route to receive notifications based on that particular route.
+
+![description](images/blog/week3/Bus%20Delays.PNG)
+
 Our aim is to attempt to provide a solution to unify all the current solutions into one user driven application which will attempt to report delays live and to update all users down the line of whatever the delay is on. The application will attempt to map any user reported issues to help consumers visualise where any issues are. Bundled into the proposed applications are little features including notifications about when Concession Cards are expiring, low money notifications and notifications letting the user know when their last train will be.
+
+http://www.news.com.au/national/victoria/stay-out-of-the-cbd-melbourne-police-warn-as-city-in-lockdown/news-story/2a8b9065b9d7e5f932809217c6723cce
+
+http://www.theage.com.au/victoria/melbourne-train-delays-peakhour-commuters-face-lengthy-delays-due-to-signalling-fault-20160913-grfkd9.html
