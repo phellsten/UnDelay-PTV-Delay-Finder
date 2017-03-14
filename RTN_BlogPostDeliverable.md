@@ -34,3 +34,15 @@ http://www.ptua.org.au/melbourne/problem/
 https://www.facebook.com/FaresFairPTV/
 
 http://www.theage.com.au/victoria/myki-still-a-disaster-and-public-transport-victoria-is-not-monitoring-it-properly-auditorgeneral-20150610-ghkj77.html
+
+#    Week 3 Blog Post - Road To Nowhere
+
+A change of approach, due to ethical reasons we will be instead target the lack of communication on PTVs behalf in giving it's customers information. Important information like the ability to discover whether a bus, train or tram is running late is too difficult to access and is not readily accessible.
+
+For busses, there are "Smart Busses" available which offer an ability to see how far the bus is away, however this is only limited to a particular set of busses which run only in Melbourne's East and the information is not readily accessible online or in an app format.
+
+For trams, a solution called tramTRACKER currently exists however the scope of the app is limited to only trams.
+
+For trains there are boards at stations which tell you how far a train is away from the station but that information is not readily available to customers online or on a connecting tram for example. This information is also very delayed in reaching customers and only high profile problems or accidents are ever reported.
+
+Our aim is to attempt to provide a solution to unify all the current solutions into one user driven application which will attempt to report delays live and to update all users down the line of whatever the delay is on. The application will attempt to map any user reported issues to help consumers visualise where any issues are. Bundled into the proposed applications are little features including notifications about when Concession Cards are expiring, low money notifications and notifications letting the user know when their last train will be.
