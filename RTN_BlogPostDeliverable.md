@@ -37,17 +37,21 @@ http://www.theage.com.au/victoria/myki-still-a-disaster-and-public-transport-vic
 
 #    Week 3 Blog Post - Road To Nowhere
 
-A change of approach, due to ethical reasons we will be instead target the lack of communication on PTVs behalf in giving it's customers information. Important information like the ability to discover whether a bus, train or tram is running late is too difficult to access and is not readily accessible.
+Due to ethical reasons, we've decided to change our apprroach to the top of transport in Melbourne. Instead targeting the lack of communication on PTVs behalf in giving it's customers important information about their travel route. Important information like the ability to discover whether a bus, train or tram is running late is too difficult to access and is not readily accessible.
 
-For busses, there are "Smart Busses" available which offer an ability to see how far the bus is away, however this is only limited to a particular set of busses which run only in Melbourne's East and the information is not readily accessible online or in an app format.
+For buses, there are "Smart Buses", which offer an ability to see how far the bus is away, however this is only limited to a particular set of busses which run only in Melbourne's East and the information is not readily accessible online or in an app format.
 
-For trams, a solution called tramTRACKER currently exists however the scope of the app is limited to only trams.
+For trams, a solution called tramTRACKER currently exists however the scope of the app is limited to only trams, and finding the correct stop your are closest to is an issue, as the app simply gives you a large list of all nearby stops, based on your location, causing users to have to trawl through it to find their desired stop.
 
-For trains there are boards at stations which tell you how far a train is away from the station but that information is not readily available to customers online or on a connecting tram for example. This information is also very delayed in reaching customers and only high profile problems or accidents are ever reported.
+For trains there are displays at stations which tell you how far a train is away, but that information is not readily available to customers online or on a connecting tram for example. This information is also very delayed in reaching customers and only high profile problems or accidents are ever reported, leaving small inconvenient delays unreported, frustrating the users.
 
-PTV recommends "checking their website for updates" however this provides only information for every single service and it is difficult to and time consuming to locate information specific to route. Our app will aim to save or favourite a specific route to receive notifications based on that particular route.
+PTV recommends "checking their website for updates" however this provides only information for every single service and it is difficult to and time consuming to locate information specific to route. Our app will aim to save or favourite a specific route to receive notifications based on that particular route, such that the user will always be aware of current or upcoming works on their route. The PTV site, also only notifies user who are "...subscrib[ed] to PTV's weekly travel update email" about upcomign railway works, unless user actively look up their tain line.
 
 ![description](images/blog/week3/Bus%20Delays.PNG)
+
+In addition, upon accessing a line or route within the PTV phone app, it has no notifications about upcoming Railway work on that specific route, or current work being undertaken. However it does proceed to notify the user if the Journey planner aspect is being used, leading to some small inconsistencies in which may possibly have been a consistent streamlined process.
+
+![description](images/blog/week3/No Notification.PNG)
 
 Our aim is to attempt to provide a solution to unify all the current solutions into one user driven application which will attempt to report delays live and to update all users down the line of whatever the delay is on. The application will attempt to map any user reported issues to help consumers visualise where any issues are. Bundled into the proposed applications are little features including notifications about when Concession Cards are expiring, low money notifications and notifications letting the user know when their last train will be.
 
