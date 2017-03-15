@@ -53,7 +53,11 @@ In addition, upon accessing a line or route within the PTV phone app, it has no 
 
 ![description](images/blog/week3/No%20notification.png)
 
-Our aim is to attempt to provide a solution to unify all the current solutions into one user driven application which will attempt to report delays live and to update all users down the line of whatever the delay is on. The application will attempt to map any user reported issues to help consumers visualise where any issues are. Bundled into the proposed applications are little features including notifications about when Concession Cards are expiring, low money notifications and notifications letting the user know when their last train will be.
+The underground stations within the city loop and some outside of it often have in excess of 8 exits, getting the wrong one can leave you 2 or more city blocks away from where you intended to be costing you up to 10 minutes in bad cases. Travellers who are unfamiliar with these stations can be overwhelmed and will often just follow the first exit sign they see. These staions often have exits leading to at least 4 different streets, sure the exits are marked but it is not always obvious which street you are heading for. Some travellers have taken to this forum to share their preferred carriage for exiting at different stations.
+https://www.railpage.com.au/f-p1941683.htm
+This isn't quite a solution to the problem but something along these lines could be very helpful, for instance simply with knowledge of where the train is arriving from and what carriage the traveller is on, a solution could suggest the passenger turn left or right upon exiting the train to get to their desired exit. A basic map that is oriented to the direction they are facing could also be useful. 
+
+Our aim is to attempt to provide a solution to unify all the current solutions into one user driven application which will attempt to report delays live and to update all users down the line of whatever the delay is on. The application will attempt to map any user reported issues to help consumers visualise where any issues are. Bundled into the proposed applications are little features including notifications about when Concession Cards are expiring, low money notifications, notifications letting the user know when their last train will be and simple time saving tips such as where to exit a station.
 
 http://www.news.com.au/national/victoria/stay-out-of-the-cbd-melbourne-police-warn-as-city-in-lockdown/news-story/2a8b9065b9d7e5f932809217c6723cce
 
