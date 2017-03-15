@@ -51,7 +51,7 @@ PTV recommends "checking their website for updates" however this provides only i
 
 In addition, upon accessing a line or route within the PTV phone app, it has no notifications about upcoming Railway work on that specific route, or current work being undertaken. However it does proceed to notify the user if the Journey planner aspect is being used, leading to some small inconsistencies in which may possibly have been a consistent streamlined process.
 
-![description](images/blog/week3/No%20Notification.PNG)
+![description](images/blog/week3/No%20notification.PNG)
 
 Our aim is to attempt to provide a solution to unify all the current solutions into one user driven application which will attempt to report delays live and to update all users down the line of whatever the delay is on. The application will attempt to map any user reported issues to help consumers visualise where any issues are. Bundled into the proposed applications are little features including notifications about when Concession Cards are expiring, low money notifications and notifications letting the user know when their last train will be.
 
