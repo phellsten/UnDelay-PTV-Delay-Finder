@@ -1,0 +1,14 @@
+body {
+  padding-top: 70px;
+  min-height: 2000px;
+  background: #000000 url("../images/web/train.jpg") no-repeat left bottom fixed;
+  background-size:cover;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
