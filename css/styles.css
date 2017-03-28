@@ -25,6 +25,12 @@ h1.title {
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
 
+@media screen and (max-width: 480px) {
+  h1.title {
+    font-size: 4em;
+  }
+}
+
 h2 {
   font-family: 'Knewave', cursive;
   color: rgb(151, 191, 63);
