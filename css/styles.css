@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Knewave|Roboto');
+
 body {
   padding-top: 70px;
   min-height: 2000px;
-  background: #000000 url("../images/web/train.jpg") no-repeat center fixed;
-  background-size:cover;
+  background: #000000 url("../images/web/underground-train.jpg") no-repeat center fixed;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
 }
 
 section {
@@ -10,17 +13,47 @@ section {
 }
 
 h1 {
+  font-family: 'Knewave', cursive;
+  color: rgb(242, 82, 46);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
+}
 
+h1.title {
+  font-family: 'Knewave', cursive;
+  font-size: 6em;
+  color: rgb(242, 82, 46);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
 
 h2 {
-
+  font-family: 'Knewave', cursive;
+  color: rgb(151, 191, 63);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
 }
 
 h3 {
-
+  font-family: 'Indie Flower', cursive;
+  color: rgb(242, 82, 46);
 }
 
 .jumbotron {
   background: rgba(0, 0, 0, 0.3);
+}
+
+nav.navbar-default {
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+  font-size: 1.3em;
+  /*background: rgb(27, 166, 140);*/
+}
+
+.panel-default {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+button.btn-continue {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.8em;
+  background-color: rgb(242, 176, 53);
+  border: 2px solid #000000
 }
