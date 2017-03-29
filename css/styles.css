@@ -1,77 +1,76 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Knewave|Roboto');
-
 body {
-  padding-top: 70px;
-  background: #000000;
-  font-family: 'Roboto', sans-serif;
+    padding-top: 70px;
+    background: #000000;
+    font-family: 'Roboto', sans-serif;
 }
 
 section.centered {
-  text-align: center;
+    text-align: center;
 }
 
 h1 {
-  font-family: 'Knewave', cursive;
-  font-size: 4em;
-  color: rgb(242, 82, 46);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
+    font-family: 'Knewave', cursive;
+    font-size: 4em;
+    color: rgb(242, 82, 46);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
 
 h1.site-title {
-  font-family: 'Knewave', cursive;
-  font-size: 6em;
-  text-align: center;
-  color: rgb(242, 82, 46);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
+    font-family: 'Knewave', cursive;
+    font-size: 6em;
+    text-align: center;
+    color: rgb(242, 82, 46);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
 
 h1.page-title {
-  font-family: 'Knewave', cursive;
-  font-size: 5em;
-  text-align: center;
-  color: rgb(242, 82, 46);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
+    font-family: 'Knewave', cursive;
+    font-size: 5em;
+    text-align: center;
+    color: rgb(242, 82, 46);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
 
 @media screen and (max-width: 480px) {
-  h1.title {
-    font-size: 4em;
-  }
+    h1.title {
+        font-size: 4em;
+    }
 }
 
 h2 {
-  font-family: 'Knewave', cursive;
-  color: rgb(151, 191, 63);
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
+    font-family: 'Knewave', cursive;
+    color: rgb(151, 191, 63);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
 }
 
 h3 {
-  font-family: 'Indie Flower', cursive;
-  color: rgb(242, 82, 46);
+    font-family: 'Indie Flower', cursive;
+    color: rgb(242, 82, 46);
 }
 
 .jumbotron {
-  background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 nav.navbar-default {
-  font-family: 'Indie Flower', cursive;
-  font-weight: bold;
-  font-size: 1.3em;
-  /*background: rgb(27, 166, 140);*/
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+    font-size: 1.3em;
+    /*background: rgb(27, 166, 140);*/
 }
 
 .panel-default {
-  background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 button.btn-continue {
-  font-family: 'Indie Flower', cursive;
-  font-size: 1.8em;
-  background-color: rgb(242, 176, 53);
-  border: 2px solid #000000
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.8em;
+    background-color: rgb(242, 176, 53);
+    border: 2px solid #000000
 }
 
 .glyphicon-warning-sign {
-  margin-right: 6px;
+    margin-right: 6px;
 }
