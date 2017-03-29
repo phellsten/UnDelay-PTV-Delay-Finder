@@ -33,7 +33,7 @@ h1.page-title {
 }
 
 @media screen and (max-width: 480px) {
-    h1.title {
+    h1.site-title {
         font-size: 4em;
     }
 }
