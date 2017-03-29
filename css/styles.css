@@ -6,9 +6,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-section {
-  text-align: center;
-}
 
 h1 {
   font-family: 'Knewave', cursive;
@@ -20,6 +17,7 @@ h1 {
 h1.site-title {
   font-family: 'Knewave', cursive;
   font-size: 6em;
+  text-align: center;
   color: rgb(242, 82, 46);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
@@ -27,6 +25,7 @@ h1.site-title {
 h1.page-title {
   font-family: 'Knewave', cursive;
   font-size: 5em;
+  text-align: center;
   color: rgb(242, 82, 46);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
