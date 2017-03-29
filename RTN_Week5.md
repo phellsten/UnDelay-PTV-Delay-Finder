@@ -10,9 +10,9 @@ As shown in the mock-up from last week, our static home page contains a navigati
 
 Another mockup static page which was created was the About page, which we are intending to have communicate to potential users the benefits of using our system over the standard ptv counterparts.
 
-INSERT LINK TO WEBPAGE HERE
+Link to webpage : INSERT LINK WHEN DONE
 
-![Mockup for the sign-up page](images/blog/Week5/Login Signup page.PNG)
+![Mockup for the sign-up page](images/blog/Week5/Login%20Signup%20page.PNG)
 
 We have a couple mockups above for other possible pages our site may contain, hoewever these are still a work in progress and in no way final.
 
