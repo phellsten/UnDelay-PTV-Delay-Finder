@@ -12,4 +12,10 @@ $(document).ready(function() {
         accessToken: 'pk.eyJ1IjoiY2RlbXBzZXkiLCJhIjoiY2oweDk0NG85MDA4bzJ3bzJzOGZkaGdoaCJ9.EHeZhg7cyJ5MAfpwwA4Clw'
     }).addTo(map);
 
+    function onMapClick(e) {
+        window.location.href = "map.html";
+    }
+
+    map.on('click', onMapClick);
+
 });
