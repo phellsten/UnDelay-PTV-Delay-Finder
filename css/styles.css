@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Knewave|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Palanquin+Dark');
+
 body {
     padding-top: 70px;
     background: #f2b035;
@@ -45,7 +47,7 @@ h2 {
 }
 
 h3 {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Palanquin Dark', sans-serif;
     color: rgb(242, 82, 46);
 }
 
@@ -54,9 +56,9 @@ h3 {
 }
 
 nav.navbar-default {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Palanquin Dark', sans-serif;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1em;
     /*background: rgb(27, 166, 140);*/
 }
 
@@ -65,8 +67,8 @@ nav.navbar-default {
 }
 
 button.btn-continue {
-    font-family: 'Indie Flower', cursive;
-    font-size: 1.8em;
+    font-family: 'Palanquin Dark', sans-serif;
+    font-size: 1.2em;
     background-color: rgb(242, 176, 53);
     border: 2px solid #000000
 }
