@@ -56,9 +56,12 @@
       <div id="metrotrains" class="collapse">
         <div class="panel panel-default">
           <table id="table1" class="table table-striped table-hover">
+            <th>Title</th>
             <th>Description</th>
             <th>Type</th>
             <th>Status</th>
+            <th>From</th>
+            <th>To</th>
           </table>
         </div>
       </div>
@@ -67,9 +70,12 @@
       <div id="metrobus" class="collapse">
         <div class="panel panel-default">
           <table id="table2" class="table table-striped table-hover">
+            <th>Title</th>
             <th>Description</th>
             <th>Type</th>
             <th>Status</th>
+            <th>From</th>
+            <th>To</th>
           </table>
         </div>
       </div>
@@ -79,9 +85,12 @@
       <div id="metrotram" class="collapse">
         <div class="panel panel-default">
           <table id="table3" class="table table-striped table-hover">
+            <th>Title</th>
             <th>Description</th>
             <th>Type</th>
             <th>Status</th>
+            <th>From</th>
+            <th>To</th>
           </table>
         </div>
       </div>
@@ -91,9 +100,12 @@
       <div id="regtrain" class="collapse">
         <div class="panel panel-default">
           <table id="table4" class="table table-striped table-hover">
+            <th>Title</th>
             <th>Description</th>
             <th>Type</th>
             <th>Status</th>
+            <th>From</th>
+            <th>To</th>
           </table>
         </div>
       </div>
@@ -103,8 +115,12 @@
       <div id="regbus" class="collapse">
         <div class="panel panel-default">
           <table id="table5" class="table table-striped table-hover">
+            <th>Title</th>
             <th>Description</th>
+            <th>Type</th>
             <th>Status</th>
+            <th>From</th>
+            <th>To</th>
           </table>
         </div>
       </div>
@@ -114,9 +130,12 @@
       <div id="regcoach" class="collapse">
         <div class="panel panel-default">
           <table id="table6" class="table table-striped table-hover">
+            <th>Title</th>
             <th>Description</th>
             <th>Type</th>
             <th>Status</th>
+            <th>From</th>
+            <th>To</th>
           </table>
         </div>
       </div>
@@ -129,7 +148,7 @@
       var data = json["disruptions"]["metro_train"];
       console.log(data);
       for (var i = 0; i<data.length; i++) {
-           txt += "<tr><td>"+data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td></tr>";
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
       }
       $("#table1").append(txt);
 
@@ -137,18 +156,7 @@
       var data = json["disruptions"]["metro_bus"];
       for (var i = 0; i<data.length; i++) {
 
-        txt += "<tr><td>";
-
-        //txt += data[i]["disruption_type"];
-        //if (data[i]["disruption_type"] == "Minor Delays") {
-
-          //txt += "<span class='glyphicon glyphicon-warning-sign' aria-hidden='true';></span>";
-        //}
-
-
-
-
-          txt += data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td></tr>";
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
 
       }
       $("#table2").append(txt);
@@ -156,28 +164,28 @@
       var txt = "";
       var data = json["disruptions"]["metro_tram"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>"+data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td></tr>";
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
       }
       $("#table3").append(txt);
 
       var txt = "";
       var data = json["disruptions"]["regional_train"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>"+data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td></tr>";
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
       }
       $("#table4").append(txt);
 
       var txt = "";
       var data = json["disruptions"]["regional_bus"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>"+data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td></tr>";
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
       }
       $("#table5").append(txt);
 
       var txt = "";
       var data = json["disruptions"]["regional_coach"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>"+data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td></tr>";
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
       }
       $("#table6").append(txt);
 
