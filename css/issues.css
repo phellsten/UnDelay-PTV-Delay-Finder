@@ -20,4 +20,7 @@ div.issues-Box{
 table{
   background: rgba(0, 0, 0, 0.7);
   border-radius: 25px;
+  display:block;
+  overflow: scroll;
+  overflow-y: hidden;
 }
