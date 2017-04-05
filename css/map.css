@@ -9,5 +9,10 @@ body {
   height: 84vh;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
-  border-radius: 25px;
+  border-radius: 8px;
+}
+
+.scrollable {
+    overflow-y: auto;
+    max-height: 60vh;
 }
