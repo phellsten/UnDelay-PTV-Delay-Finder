@@ -1,5 +1,23 @@
+body{
+  background: #000000 url("../images/web/SoutherCross.jpg") no-repeat center fixed;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
 .center {
      float: none;
      margin-left: auto;
      margin-right: auto;
+}
+
+div.issues-Box{
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 25px;
+}
+
+table{
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 25px;
 }
