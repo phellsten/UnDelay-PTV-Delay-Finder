@@ -15,6 +15,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/issues.css" rel="stylesheet">
+  <script type="text/javascript">
+
+  function checkvalue(val){
+    if(val==='3')
+       document.getElementById('color').style.display='block';
+    else
+       document.getElementById('color').style.display='none';
+}
+
+  </script>
+
 
 </head>
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
@@ -45,7 +56,7 @@
 </nav>
 <body>
 <div class="col-sm-8 center">
-  <div class="jumbotron">
+  <div class="jumbotron issues-Box">
     <h1 class="page-title">Report a Delay</h1>
     <div class="col-sm-6 center">
 
@@ -61,17 +72,22 @@
 
   <div class="form-group">
     <label for="sel1">Type:</label>
-    <select class="form-control" id="sel1">
-      <option>Minor Delay</option>
-      <option>Major Delay</option>
-      <option>Cancellation of Service</option>
-      <option>Other</option>
+    <select class="form-control" id="sel1" onchange='checkvalue(this.value)'>
+      <option value='0'>Minor Delay</option>
+      <option value='1'>Major Delay</option>
+      <option value='2'>Cancellation of Service</option>
+      <option value='3'>Other</option>
     </select>
+    <p>
+    </p>
+    <input type="text" name="color" formenctype=""class="form-control" id=color style= 'display:none' placeholder = 'Ticket Inspectors?'/>
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-default">Submit</button>
   </div>
 </form>
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
