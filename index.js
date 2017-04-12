@@ -5,6 +5,64 @@ var path = require('path');
 app.use(express.static('public'));
 app.set('view engine','ejs');
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(bodyParser.json());
+
+
+
+
+
+
+
+
+app.post('/formsubmit', function(req, res) {
+
+    var location = req.body.location;
+    var description = req.body.description;
+    var selection = req.body.sel1;
+    var delaytype = req.body.delaytype;
+
+
+
+    var MongoClient = require('mongodb').MongoClient
+        , format = require('util').format;
+
+    MongoClient.connect('mongodb://127.0.0.1:27017/newdb', function(err, db) {
+        if(err) throw err;
+
+        var collection = db.collection('newdb');
+        collection.insert({
+            'location' : location,
+            'description' : description,
+            'type' : selection,
+            'DelayType' : delaytype,
+        }, function(err, docs) {
+            collection.count(function(err, count) {
+                console.log(format("count = %s", count));
+            });
+        });
+
+        // Locate all the entries using find
+        collection.find().toArray(function(err, results) {
+            console.dir(results);
+            // Let's close the db
+            res.send(results);
+            db.close();
+        });
+    });
+
+
+
+
+
+
+
+
+
+});
+
 // Create route for the root
 app.get('/',function(req,res){
    res.render("index",{
@@ -48,8 +106,8 @@ app.get('/delay',function(req,res){
    });
 });
 
-app.listen(3000,function(req,res){
-    console.log('Listening at port 3000');
+app.listen(3001,function(req,res){
+    console.log('Listening at port 3001');
 })
 
 

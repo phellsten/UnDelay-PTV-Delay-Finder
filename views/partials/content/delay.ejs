@@ -6,19 +6,19 @@
     <h1 class="page-title">Report a Delay</h1>
     <div class="col-sm-6 center">
 
-    <form>
+    <form action="/formsubmit" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">Location</label>
-    <input type="text" name="Location" class="form-control" placeholder="Grattan Street">
+    <input type="text" name="location" id="location" class="form-control" placeholder="Grattan Street">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Description</label>
-    <input type="text" name = "Description" class="form-control" placeholder="401 bus delayed again...">
+    <input type="text" name = "description" id="description" class="form-control" placeholder="401 bus delayed again...">
   </div>
 
   <div class="form-group">
     <label for="sel1">Type:</label>
-    <select class="form-control" id="sel1" onchange='checkvalue(this.value)'>
+    <select class="form-control" id="sel1" name="sel1" onchange='checkvalue(this.value)'>
       <option value='0'>Minor Delay</option>
       <option value='1'>Major Delay</option>
       <option value='2'>Cancellation of Service</option>
@@ -27,7 +27,7 @@
     <p>
     </p>
 
-    <input type="text" name="DelayType" formenctype=""class="form-control" id=DelayType style= 'display:none' placeholder = 'Ticket Inspectors?'/>
+    <input type="text" name="delaytype" formenctype=""class="form-control" id="delaytype" style= 'display:none' placeholder = 'Ticket Inspectors?'/>
 
   </div>
   <div class="form-group">

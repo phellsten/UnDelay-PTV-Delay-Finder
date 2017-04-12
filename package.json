@@ -1,15 +1,17 @@
 {
-  "name": "kofster",
+  "name": "unDelay",
   "version": "1.0.0",
-  "description": "Web app that connects hipsters to ironic coffee shops",
+  "description": "Helping you get to where you need to go",
   "main": "index.js",
   "scripts": {
     "start": "nodemon -e css,ejs,js,json index.js"
   },
-  "author": "Eduardo Velloso",
+  "author": "Road To Nowhere",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongodb": "^2.2.25",
+    "mongoose": "^4.9.4"
   }
 }
