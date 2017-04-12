@@ -1,0 +1,152 @@
+<link href="css/issues.css" rel="stylesheet">
+<div class="col-sm-8 center">
+  <div class="jumbotron issues-Box">
+
+    <h1 class="page-title">Current Issues</h1>
+    <p>   Click on your transport choice to see the relevant delays:  </p>
+	
+  <div class="row">
+    <div class="col-sm-8 center">
+      <p>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#metrotrains">Metro Trains</button>
+      <div id="metrotrains" class="collapse">
+        <div class="panel panel-default">
+          <table id="table1" class="table table-responsive">
+            <th class="col-md-3" >Title</th>
+            <th class="col-md-4">Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>From</th>
+            <th>To</th>
+          </table>
+        </div>
+      </div>
+      <p><p>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#metrobus">Metro Buses</button>
+      <div id="metrobus" class="collapse">
+        <div class="panel panel-default">
+          <table id="table2" class="table">
+            <th class="col-md-3" >Title</th>
+            <th class="col-md-4">Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>From</th>
+            <th>To</th>
+          </table>
+        </div>
+      </div>
+
+      <p><p>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#metrotram">Metro Trams</button>
+      <div id="metrotram" class="collapse">
+        <div class="panel panel-default">
+          <table id="table3" class="table">
+            <th class="col-md-3" >Title</th>
+            <th class="col-md-4">Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>From</th>
+            <th>To</th>
+          </table>
+        </div>
+      </div>
+
+      <p><p>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#regtrain">Regional Trains</button>
+      <div id="regtrain" class="collapse">
+        <div class="panel panel-default">
+          <table id="table4" class="table">
+            <th class="col-md-3" >Title</th>
+            <th class="col-md-4">Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>From</th>
+            <th>To</th>
+          </table>
+        </div>
+      </div>
+
+      <p><p>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#regbus">Regional Buses</button>
+      <div id="regbus" class="collapse">
+        <div class="panel panel-default">
+          <table id="table5" class="table">
+            <th class="col-md-3" >Title</th>
+            <th class="col-md-4">Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>From</th>
+            <th>To</th>
+          </table>
+        </div>
+      </div>
+
+      <p><p>
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#regcoach">Regional Coaches</button>
+      <div id="regcoach" class="collapse">
+        <div class="panel panel-default">
+          <table id="table6" class="table">
+            <th class="col-md-3" >Title</th>
+            <th class="col-md-4">Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>From</th>
+            <th>To</th>
+          </table>
+        </div>
+      </div>
+
+    </div>
+<script>
+	  $.getJSON("http://timetableapi.ptv.vic.gov.au/v3/disruptions?devid=3000202&signature=91465C13C78C808005461904E474419A0247C54E", function(json) {
+      console.log(json);
+      var txt = "";
+      var data = json["disruptions"]["metro_train"];
+      console.log(data);
+      for (var i = 0; i<data.length; i++) {
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+      }
+      $("#table1").append(txt);
+
+      var txt = "";
+      var data = json["disruptions"]["metro_bus"];
+      for (var i = 0; i<data.length; i++) {
+
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+
+      }
+      $("#table2").append(txt);
+
+      var txt = "";
+      var data = json["disruptions"]["metro_tram"];
+      for (var i = 0; i<data.length; i++) {
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+      }
+      $("#table3").append(txt);
+
+      var txt = "";
+      var data = json["disruptions"]["regional_train"];
+      for (var i = 0; i<data.length; i++) {
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+      }
+      $("#table4").append(txt);
+
+      var txt = "";
+      var data = json["disruptions"]["regional_bus"];
+      for (var i = 0; i<data.length; i++) {
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+      }
+      $("#table5").append(txt);
+
+      var txt = "";
+      var data = json["disruptions"]["regional_coach"];
+      for (var i = 0; i<data.length; i++) {
+        txt += "<tr><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+      }
+      $("#table6").append(txt);
+
+
+    });
+</script>
+</div>
+</div>

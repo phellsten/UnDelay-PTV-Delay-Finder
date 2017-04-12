@@ -1,0 +1,15 @@
+{
+  "name": "kofster",
+  "version": "1.0.0",
+  "description": "Web app that connects hipsters to ironic coffee shops",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e css,ejs,js,json index.js"
+  },
+  "author": "Eduardo Velloso",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
+  }
+}
