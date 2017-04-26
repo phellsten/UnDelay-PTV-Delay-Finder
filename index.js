@@ -82,11 +82,8 @@ app.get('/issues',function(req,res){
    });
 });
 
-app.get('/map',function(req,res){
-   res.render("index",{
-       pageId:'map'
-   });
-});
+var map = require('./map.js');
+app.use('/map', map);
 
 app.get('/login',function(req,res){
    res.render("index",{
