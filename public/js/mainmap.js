@@ -134,7 +134,10 @@ $(document).ready(function() {
     var map = L.map('map', {
         center: [-37.83, 144.97],
         zoom: 13,
-        layers: [streetmap, ]
+        layers: [streetmap, ],
+		fullscreenControl: {
+			pseudoFullscreen: true
+		}
     });
 
 
