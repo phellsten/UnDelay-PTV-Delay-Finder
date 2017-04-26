@@ -24,12 +24,6 @@ $(document).ready(function() {
             layer.bindPopup(feature.properties.LINEDESCLG);
         }
     }
-	
-	function onEachDelay(feature, layer) {
-        if (feature.properties && feature.properties.LINEDESCLG) {
-            layer.bindPopup(feature.properties.LINEDESCLG);
-        }
-    }
 
     function getGeoJSONLayer(aid, rid, callback) {
 		console.log('geojson get');
@@ -41,7 +35,6 @@ $(document).ready(function() {
 			cache: false,
 			timeout: 5000,
 			success: function(data) {
-				console.log('data '+data);
 				callback(aid,rid,JSON.stringify(data));
 			},
 		    failure: function(err) {
@@ -53,7 +46,39 @@ $(document).ready(function() {
     }
 	
 	function getDelays() {
-		return $.getJSON("map/delays");
+		$.ajax({
+			url: "/map/delays/",
+			type: "GET",
+			dataType: "json",
+			contentType: "application/json",
+			cache: false,
+			timeout: 5000,
+			success: function(data) {
+				addDelays(JSON.stringify(data));
+			},
+		    failure: function(err) {
+			   console.log(err);
+		    }
+		   
+		});
+	}
+	
+	getDelays();
+	
+	function addDelays(json) {
+		var data = JSON.parse(json);
+		// console.log('delays '+data);
+		for (var i=0; i<data.length; i++) {
+			var coords = data[i]['locationData'];
+			// console.log(data[i]);
+			if (coords == "default") { continue; }
+			var coords_split = coords.split(',');
+			var lat = parseFloat(coords_split[0]);
+			var lon = parseFloat(coords_split[1]);
+			var marker = L.marker([lat, lon]).addTo(map);
+			marker.bindPopup("<b>Delay</b><br>Location:"+data[i]['location']+"<br>Delay Type:"
+								+data[i]['DelayType']+"<br>Description:"+data[i]['description']);
+		}
 	}
 	
 	function getRouteNames(callback) {
@@ -93,7 +118,7 @@ $(document).ready(function() {
 	}
 	
 	function populateRouteList(aid,rarr) {
-		console.log(aid+' '+rarr);
+		// console.log(aid+' '+rarr);
 		// for (key in rdict) { console.log(key); }
 		if (!rarr) { return; }
 		

@@ -18,14 +18,14 @@ var routeSchema = mongoose.Schema({
 var Route = gtfsdb.model("Route", routeSchema);
 
 var delaySchema = mongoose.Schema({
-	location: String,
+	'location': String,
 	description: String,
 	type: String,
 	DelayType: String,
 	locationData: String
-});
+}, { collection: 'userdata' });
 
-var Delay = delaydb.model("Delay", delaySchema);
+var UserData = delaydb.model("UserData", delaySchema);
 
 
 router.get('/',function(req,res){
@@ -41,8 +41,9 @@ router.get('/gtfs/routes',function(req,res){
 });
 
 router.get('/delays',function(req,res){
-	Delay.find(function(err,response){
-		res.json(response);
+	UserData.find(function(err,response){
+		res.contentType('json');
+		res.send(JSON.stringify(response));
 	});
 });
 
