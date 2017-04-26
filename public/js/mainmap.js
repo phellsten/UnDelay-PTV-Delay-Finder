@@ -1,54 +1,114 @@
 $(document).ready(function() {
 
-    var myStyle1 = {
+    var busStyle = {
         "color": "#ff7800",
         "weight": 5,
         "opacity": 0.1
     };
 
-    var myStyle2 = {
+    var trainStyle = {
         "color": "#42f445",
         "weight": 5,
         "opacity": 0.1
     };
 
-    var myStyle3 = {
+    var tramStyle = {
         "color": "#41f4df",
         "weight": 5,
         "opacity": 0.1
     };
 
-    var myStyle4 = {
-        "color": "#3f48f4",
-        "weight": 5,
-        "opacity": 0.1
-    };
 
-
-    function onEachFeature(feature, layer) {
+    function onEachRoute(feature, layer) {
+        if (feature.properties && feature.properties.LINEDESCLG) {
+            layer.bindPopup(feature.properties.LINEDESCLG);
+        }
+    }
+	
+	function onEachDelay(feature, layer) {
         if (feature.properties && feature.properties.LINEDESCLG) {
             layer.bindPopup(feature.properties.LINEDESCLG);
         }
     }
 
-
-    function getTramData() {
-        return $.getJSON("mapdata/ptv_tram_route.geojson");
+    function getGeoJSON(int aid, int rid) {
+		return $.ajax({
+			dataType: "geojson",
+			url: "map/geojson/"+aid+"/"+rid
+		});
+        // return $.getJSON("map/geojson/"+aid+"/"+rid);
     }
-
-    function getTrainData() {
-        return $.getJSON("mapdata/ptv_train_track_centreline.geojson");
-    }
-
-    function getRegionalBusData() {
-        return $.getJSON("mapdata/ptv_bus_route_regional.geojson");
-    }
-
-    function getMetroBusData() {
-        return $.getJSON("mapdata/ptv_bus_route_metro.geojson");
-    }
-
-    function populateFilterList(type, geodata) {
+	
+	function getDelays() {
+		return $.getJSON("map/delays", function);
+	}
+	
+	function getRouteNames() {
+		return $.getJSON("map/route_names", function);
+	}
+	
+	function populateRouteList(rdict) {
+		// Metro Buses
+		for (var i=0; i<rdict[0].length; i++) {
+			$("#metrobuslist").append('<li class="list-group-item"><input type="checkbox" id=cbox0'+i+'>'+rdict[0][i]+"</li>");
+			$("#cbox0"+i).change(function() {
+				// if checked
+				if ($(this).is(':checked')) {
+					addRouteLayer(0,i);
+				} // if unchecked 
+				else {
+					removeRouteLayer(0,i);
+				}
+			});
+		}
+		// Metro Trains
+		for (var i=0; i<rdict[1].length; i++) {
+			$("#metrotrainlist").append('<li class="list-group-item"><input type="checkbox" id=cbox1'+i+'>'+rdict[1][i]+"</li>");
+			$("#cbox1"+i).change(function() {
+				// if checked
+				if ($(this).is(':checked')) {
+					addRouteLayer(1,i);
+				} // if unchecked 
+				else {
+					removeRouteLayer(1,i);
+				}
+			});
+		}
+		// Metro Trams
+		for (var i=0; i<rdict[2].length; i++) {
+			$("#metrotramlist").append('<li class="list-group-item"><input type="checkbox" id=cbox2'+i+'>'+rdict[2][i]+"</li>");
+			$("#cbox2"+i).change(function() {
+				// if checked
+				if ($(this).is(':checked')) {
+					addRouteLayer(2,i);
+				} // if unchecked 
+				else {
+					removeRouteLayer(2,i);
+				}
+			});
+		}
+	
+	}
+	
+	mappedRoutes = {};
+	
+	function addRouteLayer(agency,route) {
+		newLayer = getGeoJSONLayer(agency,route);
+		delayList = getDelays(route);
+		delayPopups = [];
+		
+		lid = agency.toString + route.toString;
+		mappedRoutes[lid] = [newLayer, delayPopups];
+	}
+	
+	function removeRouteLayer(agency,route) {
+		lid = agency.toString + route.toString;
+		if (lid in mappedRoutes) {
+			delete mappedRoute[lid];
+		}
+	}
+	
+/*     function populateFilterList(type, geodata) {
         switch (type) {
             case "tram":
                 var routenames = [];
@@ -121,7 +181,9 @@ $(document).ready(function() {
         }
 
         L.control.layers({}, mapLayers).addTo(map);
-    });
+    }); */
+	
+	
 
 
     var streetmap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2RlbXBzZXkiLCJhIjoiY2oweDk0NG85MDA4bzJ3bzJzOGZkaGdoaCJ9.EHeZhg7cyJ5MAfpwwA4Clw', {
@@ -151,8 +213,6 @@ $(document).ready(function() {
 
         L.marker(e.latlng).addTo(map)
             .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-        L.circle(e.latlng, radius).addTo(map);
     }
 
     map.on('locationfound', onLocationFound);
