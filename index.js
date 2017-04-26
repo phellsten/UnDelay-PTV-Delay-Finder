@@ -50,7 +50,9 @@ app.post('/formsubmit', function(req, res) {
         collection.find().toArray(function(err, results) {
             console.dir(results);
             // Let's close the db
-            res.send(results);
+            res.render("index",{
+                pageId:'delay2',
+            });
             db.close();
         });
     });
@@ -67,8 +69,10 @@ app.post('/formsubmit', function(req, res) {
 
 // Create route for the root
 app.get('/',function(req,res){
+
    res.render("index",{
        pageId:'home'
+
    });
 });
 
