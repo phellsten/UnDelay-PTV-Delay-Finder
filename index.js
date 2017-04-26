@@ -23,21 +23,23 @@ app.post('/formsubmit', function(req, res) {
     var description = req.body.description;
     var selection = req.body.sel1;
     var delaytype = req.body.delaytype;
+    var locationdata = req.body.locationdata;
 
 
 
     var MongoClient = require('mongodb').MongoClient
         , format = require('util').format;
 
-    MongoClient.connect('mongodb://127.0.0.1:27017/newdb', function(err, db) {
+    MongoClient.connect('mongodb://127.0.0.1:27017/userdata', function(err, db) {
         if(err) throw err;
 
-        var collection = db.collection('newdb');
+        var collection = db.collection('userdata');
         collection.insert({
             'location' : location,
             'description' : description,
             'type' : selection,
             'DelayType' : delaytype,
+            'locationData' : locationdata,
         }, function(err, docs) {
             collection.count(function(err, count) {
                 console.log(format("count = %s", count));
@@ -106,8 +108,8 @@ app.get('/delay',function(req,res){
    });
 });
 
-app.listen(3001,function(req,res){
-    console.log('Listening at port 3001');
+app.listen(3000,function(req,res){
+    console.log('Listening at port 3000');
 })
 
 
