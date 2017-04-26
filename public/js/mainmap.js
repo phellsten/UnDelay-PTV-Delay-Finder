@@ -31,82 +31,163 @@ $(document).ready(function() {
         }
     }
 
-    function getGeoJSON(int aid, int rid) {
-		return $.ajax({
-			dataType: "geojson",
-			url: "map/geojson/"+aid+"/"+rid
+    function getGeoJSONLayer(aid, rid, callback) {
+		console.log('geojson get');
+		$.ajax({
+			url: "/map/gtfs/geojson/"+aid.toString()+"/"+rid.toString(),
+			type: "GET",
+			dataType: "json",
+			contentType: "application/json",
+			cache: false,
+			timeout: 5000,
+			success: function(data) {
+				console.log('data '+data);
+				callback(aid,rid,JSON.stringify(data));
+			},
+		    failure: function(err) {
+			   console.log(err);
+		    }
+		   
 		});
         // return $.getJSON("map/geojson/"+aid+"/"+rid);
     }
 	
 	function getDelays() {
-		return $.getJSON("map/delays", function);
+		return $.getJSON("map/delays");
 	}
 	
-	function getRouteNames() {
-		return $.getJSON("map/route_names", function);
+	function getRouteNames(callback) {
+		$.ajax({
+			url: "/map/route_names/0",
+			type: "GET",
+			dataType: "json",
+			contentType: "application/json",
+			cache: false,
+			timeout: 5000,
+			success: function(data) {
+			  callback(0,data);
+		   }
+		});
+		$.ajax({
+			url: "/map/route_names/1",
+			type: "GET",
+			dataType: "json",
+			contentType: "application/json",
+			cache: false,
+			timeout: 5000,
+			success: function(data) {
+			  callback(1,data);
+		   }
+		});
+		$.ajax({
+			url: "/map/route_names/2",
+			type: "GET",
+			dataType: "json",
+			contentType: "application/json",
+			cache: false,
+			timeout: 5000,
+			success: function(data) {
+			  callback(2,data);
+		   }
+		});
 	}
 	
-	function populateRouteList(rdict) {
-		// Metro Buses
-		for (var i=0; i<rdict[0].length; i++) {
-			$("#metrobuslist").append('<li class="list-group-item"><input type="checkbox" id=cbox0'+i+'>'+rdict[0][i]+"</li>");
-			$("#cbox0"+i).change(function() {
-				// if checked
-				if ($(this).is(':checked')) {
-					addRouteLayer(0,i);
-				} // if unchecked 
-				else {
-					removeRouteLayer(0,i);
-				}
-			});
-		}
-		// Metro Trains
-		for (var i=0; i<rdict[1].length; i++) {
-			$("#metrotrainlist").append('<li class="list-group-item"><input type="checkbox" id=cbox1'+i+'>'+rdict[1][i]+"</li>");
-			$("#cbox1"+i).change(function() {
-				// if checked
-				if ($(this).is(':checked')) {
-					addRouteLayer(1,i);
-				} // if unchecked 
-				else {
-					removeRouteLayer(1,i);
-				}
-			});
-		}
-		// Metro Trams
-		for (var i=0; i<rdict[2].length; i++) {
-			$("#metrotramlist").append('<li class="list-group-item"><input type="checkbox" id=cbox2'+i+'>'+rdict[2][i]+"</li>");
-			$("#cbox2"+i).change(function() {
-				// if checked
-				if ($(this).is(':checked')) {
-					addRouteLayer(2,i);
-				} // if unchecked 
-				else {
-					removeRouteLayer(2,i);
-				}
-			});
-		}
-	
-	}
-	
-	mappedRoutes = {};
-	
-	function addRouteLayer(agency,route) {
-		newLayer = getGeoJSONLayer(agency,route);
-		delayList = getDelays(route);
-		delayPopups = [];
+	function populateRouteList(aid,rarr) {
+		console.log(aid+' '+rarr);
+		// for (key in rdict) { console.log(key); }
+		if (!rarr) { return; }
 		
-		lid = agency.toString + route.toString;
-		mappedRoutes[lid] = [newLayer, delayPopups];
+		switch(aid){
+			// Metro Buses
+			case 0:
+			for (var i=0; i<rarr.length; i++) {
+				$("#metrobuslist").append('<li class="list-group-item"><input type="checkbox" class="rbox" id=cbox0'+i+'>'+rarr[i]+"</li>");
+				$("#cbox0"+i).change(function() {
+					// if checked
+					if ($(this).is(':checked')) {
+						addRouteLayer($(this));
+					} // if unchecked 
+					else {
+						removeRouteLayer($(this));
+					}
+				});
+			}
+			break;
+			// Metro Trains
+			case 1:
+			for (var i=0; i<rarr.length; i++) {
+				$("#metrotrainlist").append('<li class="list-group-item"><input type="checkbox" class="rbox" id=cbox1'+i+'>'+rarr[i]+"</li>");
+				$("#cbox1"+i).change(function() {
+					// if checked
+					if ($(this).is(':checked')) {
+						addRouteLayer($(this));
+					} // if unchecked 
+					else {
+						removeRouteLayer($(this));
+					}
+				});
+			}
+			break;
+			// Metro Trams
+			case 2:
+			for (var i=0; i<rarr.length; i++) {
+				$("#metrotramlist").append('<li class="list-group-item"><input type="checkbox" class="rbox" id=cbox2'+i+'>'+rarr[i]+"</li>");
+				$("#cbox2"+i).change(function() {
+					// if checked
+					if ($(this).is(':checked')) {
+						addRouteLayer($(this));
+					} // if unchecked 
+					else {
+						removeRouteLayer($(this));
+					}
+				});
+			}
+			break;
+		}
 	}
 	
-	function removeRouteLayer(agency,route) {
+	var mappedRoutes = {};
+	
+	function addRouteLayer(cbox) {
+		cid = cbox.attr('id');
+		console.log(cid);
+		agency = parseInt(cid.substring(4,5));
+		route = parseInt(cid.substring(5));
+		newLayer = getGeoJSONLayer(agency,route,addMapLayer);
+		// delayList = getDelays(route);
+		// delayPopups = [];
+		
+		// lid = agency.toString + route.toString;
+		// mappedRoutes[lid] = [newLayer, delayPopups];
+	}
+	
+	function addMapLayer(aid,rid,mapdata) {
+		layerstyle = null;
+		if (aid == 0) { layerstyle = busStyle; }
+		else if (aid == 1) { layerstyle = trainStyle; }
+		else if (aid == 2) { layerstyle = tramStyle; }
+		newlayer = L.geoJSON(mapdata, {
+			style: layerstyle,
+			onEachFeature: onEachRoute
+		});
+		lid = aid.toString + rid.toString;
+		mappedRoutes[lid] = newlayer;
+		newlayer.addTo(map);
+	}
+	
+	function removeRouteLayer(cbox) {
 		lid = agency.toString + route.toString;
 		if (lid in mappedRoutes) {
-			delete mappedRoute[lid];
+			delete mappedRoutes[lid];
 		}
 	}
+	
+	// $.when(getRouteNames()).done(function(d1) {
+		// console.log('d1 '+d1[1]);
+		// populateRouteList(d1[1]);
+	// });
+	
+	getRouteNames(populateRouteList);
 	
 /*     function populateFilterList(type, geodata) {
         switch (type) {
