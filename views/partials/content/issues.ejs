@@ -98,7 +98,7 @@
 
     </div>
 <script>
-	  $.getJSON("http://timetableapi.ptv.vic.gov.au/v3/disruptions?devid=3000202&signature=91465C13C78C808005461904E474419A0247C54E", function(json) {
+	  $.getJSON("https://timetableapi.ptv.vic.gov.au/v3/disruptions?devid=3000202&signature=91465C13C78C808005461904E474419A0247C54E", function(json) {
       console.log(json);
       var txt = "";
       var data = json["disruptions"]["metro_train"];

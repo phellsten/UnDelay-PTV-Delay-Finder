@@ -1,0 +1,10 @@
+body {
+    background: #000000 url("../images/web/flinders-street-station.jpg") no-repeat center fixed;
+    background-size: cover;
+    color: #FFFFFF
+}
+
+div.about-box {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 25px;
+}

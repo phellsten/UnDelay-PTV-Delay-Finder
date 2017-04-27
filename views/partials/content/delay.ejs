@@ -28,8 +28,25 @@
     </p>
 
     <input type="text" name="delaytype" formenctype=""class="form-control" id="delaytype" style= 'display:none' placeholder = 'Ticket Inspectors?'/>
+    <input type="hiden" class="form-control" id="locationdata" name="locationdata" style="display: none;" value="default"/>
 
   </div>
+
+        <script>
+            var x = document.getElementById("locationdata");
+
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.value = "Geolocation is not supported by this browser.";
+                }
+
+            function showPosition(position) {
+                x.value = position.coords.latitude + "," + position.coords.longitude;
+            }
+        </script>
+
   <div class="form-group">
     <button type="submit" class="btn btn-default">Submit</button>
   </div>
