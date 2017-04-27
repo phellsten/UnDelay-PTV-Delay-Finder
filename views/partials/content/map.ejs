@@ -1,0 +1,62 @@
+<!-- Main content -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Metro Buses
+        </a>
+      </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse scrollable" role="tabpanel" aria-labelledby="headingOne">
+              <ul class="list-group" id="metrobuslist">
+
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Metro Trains
+        </a>
+      </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse scrollable" role="tabpanel" aria-labelledby="headingTwo">
+              <ul class="list-group" id="metrotrainlist">
+
+              </ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Metro Trams
+        </a>
+      </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse scrollable" role="tabpanel" aria-labelledby="headingThree">
+              <ul class="list-group" id="metrotramlist">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-10">
+        <div id="map">
+        </div>
+      </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+  <script src="js/mainmap.js"></script>
+
+</body>
