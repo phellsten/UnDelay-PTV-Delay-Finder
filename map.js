@@ -82,7 +82,7 @@ router.get('/gtfs/geojson',function(req,res){
 			files.push(file);
 		});
 	})
-	console.log(files);
+	// console.log(files);
 });
 
 router.get('/gtfs/geojson/:agency([0-2])',function(req,res){
@@ -95,7 +95,7 @@ router.get('/gtfs/geojson/:agency([0-2])',function(req,res){
 router.get('/gtfs/geojson/:agency([0-2])/:route([0-9]{1,3})',function(req,res){
 	agency = parseInt(req.params.agency);
 	route = parseInt(req.params.route);
-	console.log('Geojson get '+agency+route);
+	// console.log('Geojson get '+agency+route);
 	// fs.readdir('geojson/', function(err, items) {
 		// fs.readdir('geojson/'+items[agency]+'/', function(err, items2) {
 			// res.json(items2[route]);
@@ -106,7 +106,7 @@ router.get('/gtfs/geojson/:agency([0-2])/:route([0-9]{1,3})',function(req,res){
 			if (err) throw err
 			fs.readFile('geojson/PTV-MetroBus/'+files[route], 'utf-8', function(err,data) {
 				if (err) throw err;
-				console.log(data);
+				// console.log(data);
 				res.contentType('json');
 				res.send(JSON.stringify(data));
 			});
