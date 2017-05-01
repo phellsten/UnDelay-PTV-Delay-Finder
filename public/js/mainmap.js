@@ -3,19 +3,19 @@ $(document).ready(function() {
     var busStyle = {
         "color": "#ff7800",
         "weight": 5,
-        "opacity": 0.1
+        "opacity": 0.6
     };
 
     var trainStyle = {
         "color": "#42f445",
         "weight": 5,
-        "opacity": 0.1
+        "opacity": 0.6
     };
 
     var tramStyle = {
         "color": "#41f4df",
         "weight": 5,
-        "opacity": 0.1
+        "opacity": 0.6
     };
 
 
@@ -26,16 +26,14 @@ $(document).ready(function() {
     }
 
     function getGeoJSONLayer(aid, rid, callback) {
-		console.log('geojson get');
+		// console.log('geojson get');
 		$.ajax({
 			url: "/map/gtfs/geojson/"+aid.toString()+"/"+rid.toString(),
 			type: "GET",
 			dataType: "json",
-			contentType: "application/json",
-			cache: false,
 			timeout: 5000,
 			success: function(data) {
-				callback(aid,rid,JSON.stringify(data));
+				callback(aid,rid,jQuery.parseJSON(data));
 			},
 		    failure: function(err) {
 			   console.log(err);
@@ -51,7 +49,6 @@ $(document).ready(function() {
 			type: "GET",
 			dataType: "json",
 			contentType: "application/json",
-			cache: false,
 			timeout: 5000,
 			success: function(data) {
 				addDelays(JSON.stringify(data));
@@ -175,7 +172,7 @@ $(document).ready(function() {
 	
 	function addRouteLayer(cbox) {
 		cid = cbox.attr('id');
-		console.log(cid);
+		// console.log(cid);
 		agency = parseInt(cid.substring(4,5));
 		route = parseInt(cid.substring(5));
 		newLayer = getGeoJSONLayer(agency,route,addMapLayer);
@@ -191,18 +188,21 @@ $(document).ready(function() {
 		if (aid == 0) { layerstyle = busStyle; }
 		else if (aid == 1) { layerstyle = trainStyle; }
 		else if (aid == 2) { layerstyle = tramStyle; }
-		newlayer = L.geoJSON(mapdata, {
+		newlayer = L.geoJson(mapdata, {
 			style: layerstyle,
 			onEachFeature: onEachRoute
 		});
-		lid = aid.toString + rid.toString;
-		mappedRoutes[lid] = newlayer;
+		lid = aid.toString() + rid.toString();
+		// console.log('add '+lid);
 		newlayer.addTo(map);
+		mappedRoutes[lid] = newlayer;
 	}
 	
 	function removeRouteLayer(cbox) {
-		lid = agency.toString + route.toString;
+		lid = cbox.attr('id').substring(4);
+		// console.log('rem '+lid);
 		if (lid in mappedRoutes) {
+			map.removeLayer(mappedRoutes[lid]);
 			delete mappedRoutes[lid];
 		}
 	}
