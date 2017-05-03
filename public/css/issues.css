@@ -19,11 +19,16 @@ div.issues-Box{
 
 table{
   background: rgba(0, 0, 0, 0.7);
-  border-radius: 25px;
+  border-radius: 50px;
   display:block;
-  overflow: scroll;
+  overflow: scroll;	
   overflow-y: hidden;
   color: black;
-  table-layout: fixed
+  font-size:	12px;
+
 }
 
+table.dataTable tbody td {
+    word-break: break-word;
+    vertical-align: top;
+}
