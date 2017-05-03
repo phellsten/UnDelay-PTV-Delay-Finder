@@ -23,4 +23,7 @@ table{
   display:block;
   overflow: scroll;
   overflow-y: hidden;
+  color: black;
+  table-layout: fixed
 }
+
