@@ -58,8 +58,8 @@ module.exports = function(app, passport) {
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/profile', isLoggedIn, function(req, res) {
 		res.render('profile', {
-			user : req.user, // get the user out of session and pass to template
-      pageId: 'profile'
+      pageId: 'profile',
+			user : req.user // get the user out of session and pass to template
 		});
 	});
 
@@ -71,6 +71,24 @@ module.exports = function(app, passport) {
 		res.redirect('/');
 	});
 };
+
+app.get('/delay',function(req,res){
+   res.render("index",{
+       pageId:'delay'
+   });
+});
+
+app.get('/issues',function(req,res){
+   res.render("index",{
+       pageId:'issues'
+   });
+});
+
+app.get('/about',function(req,res){
+   res.render("index",{
+       pageId:'about'
+   });
+});
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
