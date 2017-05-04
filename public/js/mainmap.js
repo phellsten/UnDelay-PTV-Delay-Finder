@@ -1,18 +1,18 @@
 $(document).ready(function() {
 
-    var busStyle = {
+    var defBusStyle = {
         "color": "#ff7800",
         "weight": 5,
         "opacity": 0.6
     };
 
-    var trainStyle = {
+    var defTrainStyle = {
         "color": "#42f445",
         "weight": 5,
         "opacity": 0.6
     };
 
-    var tramStyle = {
+    var defTramStyle = {
         "color": "#41f4df",
         "weight": 5,
         "opacity": 0.6
@@ -38,11 +38,11 @@ $(document).ready(function() {
 		    failure: function(err) {
 			   console.log(err);
 		    }
-		   
+
 		});
         // return $.getJSON("map/geojson/"+aid+"/"+rid);
     }
-	
+
 	function getDelays() {
 		$.ajax({
 			url: "/map/delays/",
@@ -56,12 +56,12 @@ $(document).ready(function() {
 		    failure: function(err) {
 			   console.log(err);
 		    }
-		   
+
 		});
 	}
-	
+
 	getDelays();
-	
+
 	function addDelays(json) {
 		var data = JSON.parse(json);
 		// console.log('delays '+data);
@@ -77,7 +77,7 @@ $(document).ready(function() {
 								+data[i]['DelayType']+"<br>Description:"+data[i]['description']);
 		}
 	}
-	
+
 	function getRouteNames(callback) {
 		$.ajax({
 			url: "/map/route_names/0",
@@ -113,12 +113,12 @@ $(document).ready(function() {
 		   }
 		});
 	}
-	
+
 	function populateRouteList(aid,rarr) {
 		// console.log(aid+' '+rarr);
 		// for (key in rdict) { console.log(key); }
 		if (!rarr) { return; }
-		
+
 		switch(aid){
 			// Metro Buses
 			case 0:
@@ -128,7 +128,7 @@ $(document).ready(function() {
 					// if checked
 					if ($(this).is(':checked')) {
 						addRouteLayer($(this));
-					} // if unchecked 
+					} // if unchecked
 					else {
 						removeRouteLayer($(this));
 					}
@@ -143,7 +143,7 @@ $(document).ready(function() {
 					// if checked
 					if ($(this).is(':checked')) {
 						addRouteLayer($(this));
-					} // if unchecked 
+					} // if unchecked
 					else {
 						removeRouteLayer($(this));
 					}
@@ -158,7 +158,7 @@ $(document).ready(function() {
 					// if checked
 					if ($(this).is(':checked')) {
 						addRouteLayer($(this));
-					} // if unchecked 
+					} // if unchecked
 					else {
 						removeRouteLayer($(this));
 					}
@@ -167,9 +167,9 @@ $(document).ready(function() {
 			break;
 		}
 	}
-	
+
 	var mappedRoutes = {};
-	
+
 	function addRouteLayer(cbox) {
 		cid = cbox.attr('id');
 		// console.log(cid);
@@ -178,16 +178,21 @@ $(document).ready(function() {
 		newLayer = getGeoJSONLayer(agency,route,addMapLayer);
 		// delayList = getDelays(route);
 		// delayPopups = [];
-		
+
 		// lid = agency.toString + route.toString;
 		// mappedRoutes[lid] = [newLayer, delayPopups];
 	}
-	
+
 	function addMapLayer(aid,rid,mapdata) {
 		layerstyle = null;
-		if (aid == 0) { layerstyle = busStyle; }
-		else if (aid == 1) { layerstyle = trainStyle; }
-		else if (aid == 2) { layerstyle = tramStyle; }
+		if (aid == 0) { layerstyle = defBusStyle }
+		else if (aid == 1) {
+            layerstyle = defTrainStyle;
+            if (mapdata['colour']) {
+                layerstyle.color = mapdata['colour'];
+            }
+        }
+		else if (aid == 2) { layerstyle = defTramStyle; }
 		newlayer = L.geoJson(mapdata, {
 			style: layerstyle,
 			onEachFeature: onEachRoute
@@ -197,7 +202,7 @@ $(document).ready(function() {
 		newlayer.addTo(map);
 		mappedRoutes[lid] = newlayer;
 	}
-	
+
 	function removeRouteLayer(cbox) {
 		lid = cbox.attr('id').substring(4);
 		// console.log('rem '+lid);
@@ -206,14 +211,14 @@ $(document).ready(function() {
 			delete mappedRoutes[lid];
 		}
 	}
-	
+
 	// $.when(getRouteNames()).done(function(d1) {
 		// console.log('d1 '+d1[1]);
 		// populateRouteList(d1[1]);
 	// });
-	
+
 	getRouteNames(populateRouteList);
-	
+
 /*     function populateFilterList(type, geodata) {
         switch (type) {
             case "tram":
@@ -288,8 +293,8 @@ $(document).ready(function() {
 
         L.control.layers({}, mapLayers).addTo(map);
     }); */
-	
-	
+
+
 
 
     var streetmap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2RlbXBzZXkiLCJhIjoiY2oweDk0NG85MDA4bzJ3bzJzOGZkaGdoaCJ9.EHeZhg7cyJ5MAfpwwA4Clw', {
