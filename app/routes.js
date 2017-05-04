@@ -70,25 +70,25 @@ module.exports = function(app, passport) {
 		req.logout();
 		res.redirect('/');
 	});
+
+  app.get('/delay',function(req,res){
+     res.render("index",{
+         pageId:'delay'
+     });
+  });
+  app.get('/issues',function(req,res){
+     res.render("index",{
+         pageId:'issues'
+     });
+  });
+
+  app.get('/about',function(req,res){
+     res.render("index",{
+         pageId:'about'
+     });
+  });
+
 };
-
-app.get('/delay',function(req,res){
-   res.render("index",{
-       pageId:'delay'
-   });
-});
-
-app.get('/issues',function(req,res){
-   res.render("index",{
-       pageId:'issues'
-   });
-});
-
-app.get('/about',function(req,res){
-   res.render("index",{
-       pageId:'about'
-   });
-});
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
