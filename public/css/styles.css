@@ -5,6 +5,7 @@ body {
     padding-top: 70px;
     background: #f2b035;
     font-family: 'Roboto', sans-serif;
+    overflow-y:scroll;
 }
 
 section.centered {
