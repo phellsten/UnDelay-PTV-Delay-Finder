@@ -87,7 +87,7 @@ module.exports = function(app, passport) {
          pageId:'about'
      });
   });
-  var map = require('./map.js');
+  var map = require('../map.js');
   app.use('/map', map);
 };
 
