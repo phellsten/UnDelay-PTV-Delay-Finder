@@ -148,3 +148,12 @@ input::-webkit-input-placeholder {
     text-decoration: none;
     margin: 5px 2px;
 }
+
+
+.navbar-brand{
+  padding: 0 15px;
+}
+
+.navbar-brand>img {
+  -webkit-user-drag: none;
+}
