@@ -7,7 +7,8 @@ module.exports = function(app, passport) {
 	// =====================================
 	app.get('/', function(req, res) {
     res.render("index",{
-        pageId:'home'
+        pageId:'home',
+        user : req.user
     });
 	});
 
@@ -20,13 +21,14 @@ module.exports = function(app, passport) {
 		// render the page and pass in any flash data if it exists
 	   res.render('index', {
        message: req.flash('loginMessage'),
-       pageId:'login'
+       pageId:'login',
+       user : req.user
      });
 	});
 
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
-		successRedirect : '/profile', // redirect to the secure profile section
+		successRedirect : '/', // redirect to the secure profile section
 		failureRedirect : '/login', // redirect back to the signup page if there is an error
 		failureFlash : true // allow flash messages
 	}));
@@ -40,7 +42,8 @@ module.exports = function(app, passport) {
 		// render the page and pass in any flash data if it exists
 		res.render('index', {
         message: req.flash('signupMessage'),
-        pageId:'signup'
+        pageId:'signup',
+        user : req.user
     });
 	});
 
@@ -73,18 +76,21 @@ module.exports = function(app, passport) {
 
   app.get('/delay',function(req,res){
      res.render("index",{
-         pageId:'delay'
+         pageId:'delay',
+         user : req.user
      });
   });
   app.get('/issues',function(req,res){
      res.render("index",{
-         pageId:'issues'
+         pageId:'issues',
+         user : req.user
      });
   });
 
   app.get('/about',function(req,res){
      res.render("index",{
-         pageId:'about'
+         pageId:'about',
+         user : req.user
      });
   });
   var map = require('../map.js');

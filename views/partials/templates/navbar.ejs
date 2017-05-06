@@ -19,9 +19,13 @@
 		  <li <%if(pageId==='map'){%>class="active"<%}%>><a href="/map">Interactive Map</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-		  <li <%if(pageId==='login'){%>class="active"<%}%>><a href="/login">Login</a></li>
-		  <li <%if(pageId==='signup'){%>class="active"<%}%>><a href="/signup">Sign Up</a></li>
-
+          <%if(user){%>
+            <li><a href="/profile" class = "profileLink"><%= user.local.username %></a></li>
+            <li><a href="/logout">Logout</a></li>
+          <%}else{%>
+            <li <%if(pageId==='login'){%>class="active"<%}%>><a href="/login">Login</a></li>
+            <li <%if(pageId==='signup'){%>class="active"<%}%>><a href="/signup">Sign Up</a></li>
+          <%}%>
         </ul>
       </div>
       <!--/.nav-collapse -->
