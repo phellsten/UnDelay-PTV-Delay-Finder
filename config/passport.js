@@ -42,6 +42,9 @@ module.exports = function(passport) {
     function(req, email, password, done) {
 
 		// find a user whose email is the same as the forms email
+        if (password === req.param('confirm')){
+          return done(null, false, req.flash('signupMessage', 'Your passwords do not match.'));
+        }
 		// we are checking to see if the user trying to login already exists
         User.findOne({ 'local.email' :  email }, function(err, user) {
             // if there are any errors, return the error
