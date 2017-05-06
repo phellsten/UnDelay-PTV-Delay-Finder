@@ -21,7 +21,8 @@ module.exports = function(app, passport) {
 		// render the page and pass in any flash data if it exists
 	   res.render('index', {
        message: req.flash('loginMessage'),
-       pageId:'login'
+       pageId:'login',
+       user : req.user
      });
 	});
 
@@ -41,7 +42,8 @@ module.exports = function(app, passport) {
 		// render the page and pass in any flash data if it exists
 		res.render('index', {
         message: req.flash('signupMessage'),
-        pageId:'signup'
+        pageId:'signup',
+        user : req.user
     });
 	});
 
