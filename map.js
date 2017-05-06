@@ -30,7 +30,8 @@ var UserData = delaydb.model("UserData", delaySchema);
 
 router.get('/',function(req,res){
    res.render("index",{
-       pageId:'map'
+       pageId:'map',
+			 user : req.user
    });
 });
 
