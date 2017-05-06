@@ -9,6 +9,9 @@
         </div>
       </div>
       <div class="main-login main-center">
+        <% if (message.length > 0) { %>
+		        <div class="alert alert-danger"><%= message %></div>
+	      <% } %>
         <form class="form-horizontal" method="post" action="#">
           <div class="form-group">
             <label for="username" class="cols-sm-2 control-label">Username</label>
@@ -31,7 +34,7 @@
               </div>
             </div>
           </div>
-
+          <p>Need an account? <a href="/signup">Signup</a></p>
           <div class="form-group ">
             <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
           </div>
