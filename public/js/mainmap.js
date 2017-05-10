@@ -320,14 +320,14 @@ $(document).ready(function() {
         maxZoom: 15
     });
 
-    function onLocationFound(e) {
-        var radius = e.accuracy / 2;
+    // function onLocationFound(e) {
+        // var radius = e.accuracy / 2;
 
-        L.marker(e.latlng).addTo(map)
-            .bindPopup("You are within " + radius + " meters from this point").openPopup();
-    }
+        // L.marker(e.latlng).addTo(map)
+            // .bindPopup("You are within " + radius + " meters from this point").openPopup();
+    // }
 
-    map.on('locationfound', onLocationFound);
+    // map.on('locationfound', onLocationFound);
 
     function onLocationError(e) {
         alert(e.message);
