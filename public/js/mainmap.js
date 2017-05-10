@@ -73,8 +73,8 @@ $(document).ready(function() {
 			var lat = parseFloat(coords_split[0]);
 			var lon = parseFloat(coords_split[1]);
 			var marker = L.marker([lat, lon]).addTo(map);
-			marker.bindPopup("<b>Delay</b><br>Location:"+data[i]['location']+"<br>Delay Type:"
-								+data[i]['DelayType']+"<br>Description:"+data[i]['description']);
+			marker.bindPopup("<b>Delay</b><br>Location: "+data[i]['location']+"<br>Delay Type: "
+								+data[i]['DelayType']+"<br>Details: "+data[i]['description']);
 		}
 	}
 
