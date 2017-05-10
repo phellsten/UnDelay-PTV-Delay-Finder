@@ -95,48 +95,49 @@ module.exports = function(app, passport) {
   });
   var map = require('../map.js');
   app.use('/map', map);
+
+  app.post('/formsubmit', function(req, res) {
+
+      var location = req.body.location;
+      var description = req.body.description;
+      var selection = req.body.sel1;
+      var delaytype = req.body.delaytype;
+      var locationdata = req.body.locationdata;
+
+
+
+      var MongoClient = require('mongodb').MongoClient
+          , format = require('util').format;
+
+      MongoClient.connect('mongodb://127.0.0.1:27017/userdata', function(err, db) {
+          if(err) throw err;
+
+          var collection = db.collection('userdata');
+          collection.insert({
+              'location' : location,
+              'description' : description,
+              'type' : selection,
+              'DelayType' : delaytype,
+              'locationData' : locationdata,
+          }, function(err, docs) {
+              collection.count(function(err, count) {
+                  console.log(format("count = %s", count));
+              });
+          });
+
+          // Locate all the entries using find
+          collection.find().toArray(function(err, results) {
+              console.dir(results);
+              // Let's close the db
+              res.render("index",{
+                  pageId:'delay2',
+                  user: req.user
+              });
+              db.close();
+          });
+      });
+  });
 };
-
-app.post('/formsubmit', function(req, res) {
-
-    var location = req.body.location;
-    var description = req.body.description;
-    var selection = req.body.sel1;
-    var delaytype = req.body.delaytype;
-    var locationdata = req.body.locationdata;
-
-
-
-    var MongoClient = require('mongodb').MongoClient
-        , format = require('util').format;
-
-    MongoClient.connect('mongodb://127.0.0.1:27017/userdata', function(err, db) {
-        if(err) throw err;
-
-        var collection = db.collection('userdata');
-        collection.insert({
-            'location' : location,
-            'description' : description,
-            'type' : selection,
-            'DelayType' : delaytype,
-            'locationData' : locationdata,
-        }, function(err, docs) {
-            collection.count(function(err, count) {
-                console.log(format("count = %s", count));
-            });
-        });
-
-        // Locate all the entries using find
-        collection.find().toArray(function(err, results) {
-            console.dir(results);
-            // Let's close the db
-            res.render("index",{
-                pageId:'delay2',
-            });
-            db.close();
-        });
-    });
-});
 
 // route middleware to make sure
 function isLoggedIn(req, res, next) {
