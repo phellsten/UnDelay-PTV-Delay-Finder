@@ -54,10 +54,18 @@ router.get('/route_names/:agency([0-2])',function(req,res){
 	if (agency == 0) { agency_name = 'PTV-MetroBus'; }
 	else if (agency == 1) { agency_name = 'PTV-MetroTrain'; }
 	else if (agency == 2) { agency_name = 'PTV-MetroTram'; }
-	Route.find({agency_key: agency_name}).distinct('route_short_name', function(error,ids) {
-		// res.json(ids.reverse());
+	Route.find({agency_key: agency_name},'route_short_name route_long_name agency_name', function(error,ids) {
+		rlist = []
+		for (var i=0; i<ids.length; i++) {
+			if (ids[i]['agency_name'] == 'PTV-MetroTrain') {
+				rlist.push(ids[i]['route_short_name']);
+			} else {
+				rlist.push(ids[i]['route_short_name']+' - '+ids[i]['route_long_name']);
+			}
+		}
+		rlist.sort();
 		res.contentType('json');
-		res.send(JSON.stringify(ids.reverse()));
+		res.send(JSON.stringify(rlist));
 	});
 });
 
