@@ -1,5 +1,8 @@
 <link href="css/home.css" rel="stylesheet">
 <div class="container">
+    <% if (message.length > 0) { %>
+      <div class="alert alert-success alert-dismissable"><%= message %></div>
+    <% } %>
     <section>
       <div class="jumbotron">
         <section class="centered">
