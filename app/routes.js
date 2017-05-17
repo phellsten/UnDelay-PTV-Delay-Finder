@@ -7,11 +7,11 @@ module.exports = function(app, passport) {
 	// =====================================
 	app.get('/', function(req, res) {
     res.render("index",{
-        pageId:'home',
-        user : req.user,
-        message: req.flash('successRegister')
+      pageId:'home',
+      user : req.user,
+      message: req.flash('successRegister')
     });
-	});
+  });
 
 	// =====================================
 	// LOGIN ===============================
@@ -20,12 +20,12 @@ module.exports = function(app, passport) {
 	app.get('/login',notLoggedIn, function(req, res) {
 
 		// render the page and pass in any flash data if it exists
-	   res.render('index', {
-       message: req.flash('loginMessage'),
-       pageId:'login',
-       user : req.user
-     });
-	});
+    res.render('index', {
+     message: req.flash('loginMessage'),
+     pageId:'login',
+     user : req.user
+   });
+  });
 
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
@@ -42,9 +42,9 @@ module.exports = function(app, passport) {
 
 		// render the page and pass in any flash data if it exists
 		res.render('index', {
-        message: req.flash('signupMessage'),
-        pageId:'signup',
-        user : req.user
+      message: req.flash('signupMessage'),
+      pageId:'signup',
+      user : req.user
     });
 	});
 
@@ -72,71 +72,72 @@ module.exports = function(app, passport) {
 	// =====================================
 	app.get('/logout', function(req, res) {
 		req.logout();
-        req.flash('successRegister', 'Successfully logged out. See you next time!')
-		res.redirect('/');
-	});
+    req.flash('successRegister', 'Successfully logged out. See you next time!')
+    res.redirect('/');
+  });
 
   app.get('/delay',loginBefore,function(req,res){
-     res.render("index",{
-         pageId:'delay',
-         user : req.user
-     });
-  });
+   res.render("index",{
+     pageId:'delay',
+     user : req.user
+   });
+ });
   app.get('/issues',function(req,res){
-     res.render("index",{
-         pageId:'issues',
-         user : req.user
-     });
-  });
+   res.render("index",{
+     pageId:'issues',
+     user : req.user
+   });
+ });
 
   app.get('/about',function(req,res){
-     res.render("index",{
-         pageId:'about',
-         user : req.user
-     });
-  });
+   res.render("index",{
+     pageId:'about',
+     user : req.user
+   });
+ });
   var map = require('../map.js');
   app.use('/map', map);
 
+  // Submit form to database
   app.post('/formsubmit', function(req, res) {
 
-      var sanitize = require('mongo-sanitize');
+    var sanitize = require('mongo-sanitize');
 
-      var route = sanitize(req.body.routelist);
-      var description = sanitize(req.body.description);
-      var selection = sanitize(req.body.sel1);
-      var delaytype = sanitize(req.body.delaytype);
-      var locationdata = sanitize(req.body.locationdata);
-      var MongoClient = require('mongodb').MongoClient
-          , format = require('util').format;
+    var route = sanitize(req.body.routelist);
+    var description = sanitize(req.body.description);
+    var selection = sanitize(req.body.sel1);
+    var delaytype = sanitize(req.body.delaytype);
+    var locationdata = sanitize(req.body.locationdata);
+    var MongoClient = require('mongodb').MongoClient
+    , format = require('util').format;
 
-      MongoClient.connect('mongodb://127.0.0.1:27017/userdata', function(err, db) {
-          if(err) throw err;
+    MongoClient.connect('mongodb://127.0.0.1:27017/userdata', function(err, db) {
+      if(err) throw err;
 
-          var collection = db.collection('delays');
-          collection.insert({
-              'route' : route,
-              'description' : description,
-              'type' : selection,
-              'delayType' : delaytype,
-              'locationData' : locationdata,
-          }, function(err, docs) {
-              collection.count(function(err, count) {
-                  console.log(format("count = %s", count));
-              });
-          });
+      var collection = db.collection('delays');
+      collection.insert({
+        'route' : route,
+        'description' : description,
+        'type' : selection,
+        'delayType' : delaytype,
+        'locationData' : locationdata,
+      }, function(err, docs) {
+        collection.count(function(err, count) {
+          console.log(format("count = %s", count));
+        });
+      });
 
           // Locate all the entries using find
           collection.find().toArray(function(err, results) {
-              console.dir(results);
+            console.dir(results);
               // Let's close the db
               res.render("index",{
-                  pageId:'delay2',
-                  user: req.user
+                pageId:'delay2',
+                user: req.user
               });
               db.close();
-          });
-      });
+            });
+        });
   });
 };
 
@@ -153,15 +154,15 @@ function isLoggedIn(req, res, next) {
 function loginBefore(req, res, next) {
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
-        return next();
+      return next();
     // if they aren't redirect them to the home page
     res.redirect('/login');
-}
+  }
 
-function notLoggedIn(req, res, next){
+  function notLoggedIn(req, res, next){
     if (req.isAuthenticated())
-        res.redirect('/');
+      res.redirect('/');
     else{
-        return next();
+      return next();
     }
-}
+  }

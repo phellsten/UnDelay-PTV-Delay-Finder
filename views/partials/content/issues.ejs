@@ -62,9 +62,11 @@
     }
   }
 
-
+    // Fetch PTV API Data
 	  $.getJSON("https://timetableapi.ptv.vic.gov.au/v3/disruptions?devid=3000202&signature=91465C13C78C808005461904E474419A0247C54E", function(json) {
       console.log(json);
+
+      // Build table from PTV API
       var txt = "";
       var data = json["disruptions"]["metro_train"];
       console.log(data);
@@ -269,7 +271,7 @@
       });
 
 
-
+// Highlight buttons upon clicking
 
 $('.button1').on('click', function(){
     $('.button1').removeClass('active');

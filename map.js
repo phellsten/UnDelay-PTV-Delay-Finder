@@ -29,10 +29,10 @@ var Delay = delaydb.model("Delay", delaySchema);
 
 
 router.get('/',function(req,res){
-   res.render("index",{
-       pageId:'map',
-			 user : req.user
-   });
+	res.render("index",{
+		pageId:'map',
+		user : req.user
+	});
 });
 
 router.get('/gtfs/routes',function(req,res){
@@ -110,35 +110,35 @@ router.get('/gtfs/geojson/:agency([0-2])/:route([0-9]{1,3})',function(req,res){
 			// res.json(items2[route]);
 		// });
 	// });
-	if (agency == 0) {
-		fs.readdir('geojson/PTV-MetroBus', (err, files) => {
-			if (err) throw err
+if (agency == 0) {
+	fs.readdir('geojson/PTV-MetroBus', (err, files) => {
+		if (err) throw err
 			fs.readFile('geojson/PTV-MetroBus/'+files[route], 'utf-8', function(err,data) {
 				if (err) throw err;
 				// console.log(data);
 				res.contentType('json');
 				res.send(JSON.stringify(data));
 			});
-		});
-	} else if (agency == 1) {
-		fs.readdir('geojson/PTV-MetroTrain', (err, files) => {
-			if (err) throw err
+	});
+} else if (agency == 1) {
+	fs.readdir('geojson/PTV-MetroTrain', (err, files) => {
+		if (err) throw err
 			fs.readFile('geojson/PTV-MetroTrain/'+files[route], 'utf-8', function(err,data) {
 				if (err) throw err;
 				res.contentType('json');
 				res.send(JSON.stringify(data));
 			});
-		});
-	} else if (agency == 2) {
-		fs.readdir('geojson/PTV-MetroTram', (err, files) => {
-			if (err) throw err
+	});
+} else if (agency == 2) {
+	fs.readdir('geojson/PTV-MetroTram', (err, files) => {
+		if (err) throw err
 			fs.readFile('geojson/PTV-MetroTram/'+files[route], 'utf-8', function(err,data) {
 				if (err) throw err;
 				res.contentType('json');
 				res.send(JSON.stringify(data));
 			});
-		});
-	}
+	});
+}
 });
 
 module.exports = router;
