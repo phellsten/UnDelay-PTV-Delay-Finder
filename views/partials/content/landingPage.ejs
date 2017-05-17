@@ -1,7 +1,7 @@
 <link href="css/home.css" rel="stylesheet">
 <div class="container">
     <% if (message.length > 0) { %>
-      <div class="alert alert-success alert-dismissable"><%= message %></div>
+      <div class="alert alert-success alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">×</a><%= message %></div>
     <% } %>
     <section>
       <div class="jumbotron">
