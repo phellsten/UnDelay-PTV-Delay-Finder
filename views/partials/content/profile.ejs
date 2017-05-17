@@ -1,13 +1,15 @@
 <title><%= user.local.username %> - UnDelay</title>
 <link href="css/profile.css" rel="stylesheet">
 <div class="container">
+	<div class="jumbotron about-box">
+		<section>
 	<div class="row">
 		<div class="col-sm-10"><h1><%= user.local.username %></h1></div>
 		<div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
 	</div>
 	<div class="row">
 		<div class="col-sm-3"><!--left col-->
-
+			<div class="profile-sidebar">
 			<ul class="list-group">
 				<li class="list-group-item text-muted">Profile</li>
 				<li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> 2.13.2017</li>
@@ -20,17 +22,19 @@
 				<li class="list-group-item text-right"><span class="pull-left"><strong>Delays Reported</strong></span> 125</li>
 				<li class="list-group-item text-right"><span class="pull-left"><strong>+1s</strong></span> 13</li>
 			</ul>
+			</div>
 
 		</div><!--/col-3-->
 		<div class="col-sm-9">
 
 			<ul class="nav nav-tabs" id="myTab">
-				<li class="active"><a href="#home" data-toggle="tab">Subscribed</a></li>
+				<li class="active"><a href="#home" data-toggle="tab">Subscribed Routes</a></li>
 				<li><a href="#settings" data-toggle="tab">Settings</a></li>
 			</ul>
 
 			<div class="tab-content">
 				<div class="tab-pane active" id="home">
+					<div class="wrapper container">
 					<div class="table-responsive">
 						<table class="table table-hover">
 							<thead>
@@ -75,6 +79,7 @@
 							</div>
 						</div>
 					</div><!--/table-resp-->
+					</div><!--/wrapper-container-->
 
 					<hr>
 					<h4>Recent Activity</h4>
@@ -149,3 +154,4 @@
 
 	</div><!--/col-9-->
 </div><!--/row-->
+</div>

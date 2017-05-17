@@ -3,3 +3,7 @@ body {
     background-size: cover;
     color: #FFFFFF
 }
+
+div.profile-sidebar{
+    color: #555;
+}
