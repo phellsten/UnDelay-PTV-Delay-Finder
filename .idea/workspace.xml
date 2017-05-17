@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2168d2b1-7883-45b5-bb4c-2a69943eb7f4" name="Default" comment="New General File Footer">
+    <list default="true" id="2168d2b1-7883-45b5-bb4c-2a69943eb7f4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -777,7 +777,7 @@
       <workItem from="1494985849196" duration="8066000" />
       <workItem from="1494997838191" duration="1474000" />
       <workItem from="1495001180474" duration="164000" />
-      <workItem from="1495002247690" duration="18231000" />
+      <workItem from="1495002247690" duration="18249000" />
     </task>
     <task id="LOCAL-00001" summary="New General File Footer">
       <created>1495026333303</created>
@@ -842,11 +842,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495026790127</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="intellij file">
+      <created>1495026800514</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1495026800514</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52683000" />
+    <option name="totallyTimeSpent" value="52701000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -923,7 +930,8 @@
     <MESSAGE value="New Flash Messages added to route." />
     <MESSAGE value="Added signup validation" />
     <MESSAGE value="signup validation functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="signup validation functions" />
+    <MESSAGE value="intellij file" />
+    <option name="LAST_COMMIT_MESSAGE" value="intellij file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
