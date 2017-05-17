@@ -98,11 +98,13 @@ module.exports = function(app, passport) {
 
   app.post('/formsubmit', function(req, res) {
 
-      var location = req.body.location;
-      var description = req.body.description;
-      var selection = req.body.sel1;
-      var delaytype = req.body.delaytype;
-      var locationdata = req.body.locationdata;
+      var sanitize = require('mongo-sanitize');
+
+      var route = sanitize(req.body.routelist);
+      var description = sanitize(req.body.description);
+      var selection = sanitize(req.body.sel1);
+      var delaytype = sanitize(req.body.delaytype);
+      var locationdata = sanitize(req.body.locationdata);
 
 
 
@@ -112,12 +114,12 @@ module.exports = function(app, passport) {
       MongoClient.connect('mongodb://127.0.0.1:27017/userdata', function(err, db) {
           if(err) throw err;
 
-          var collection = db.collection('userdata');
+          var collection = db.collection('delays');
           collection.insert({
-              'location' : location,
+              'route' : route,
               'description' : description,
               'type' : selection,
-              'DelayType' : delaytype,
+              'delayType' : delaytype,
               'locationData' : locationdata,
           }, function(err, docs) {
               collection.count(function(err, count) {
