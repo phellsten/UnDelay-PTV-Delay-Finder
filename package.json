@@ -2,7 +2,7 @@
   "name": "unDelay",
   "version": "1.0.0",
   "description": "Helping you get to where you need to go",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon -e css,ejs,js,json index.js"
   },
