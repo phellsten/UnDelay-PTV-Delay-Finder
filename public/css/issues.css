@@ -1,3 +1,5 @@
+@import url('//cdn.datatables.net/1.10.2/css/jquery.dataTables.css');
+
 body{
   background: #000000 url("../images/web/SoutherCross.jpg") no-repeat center fixed;
   background-size: cover;
@@ -47,4 +49,25 @@ button.FilterButton{
   border-radius: 10px;
   margin-right: 30px;
   margin-left:  30px;
+}
+
+
+ td.details-control {
+    background: url('https://www.datatables.net/examples/resources/details_open.png') no-repeat right;
+
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('https://www.datatables.net/examples/resources/details_close.png') no-repeat right;
+
+}
+
+div.ChildRow{
+    text-align: left;
+    margin-left: 20%;
+    max-width: 300px;
+}
+
+div.ChildRow:before {
+    content:"• ";
 }

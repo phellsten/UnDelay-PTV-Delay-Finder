@@ -98,140 +98,138 @@
 
     $('#Table-Wrapper').hide() //Hiding the table initially
     $('#StatusButtons').hide()
-	  $("#table1").append(txt);
-	  var dataTable = $('#table1').DataTable( {
-      autoWidth: false,
-  'columnDefs' : [
-    {
-      'targets' : [0, 3, 4],
-      'visible' : false
+
+
+    // Formatting function for row details
+    function format(value) {
+        return '<div class = "ChildRow">Transport type: ' + value[0] + '</div>' + '<div class = "ChildRow">Description: ' + value[2] + '</div>' + '<div class = "ChildRow">Disruption type: ' + value[3] + '</div>' + '<div class = "ChildRow">Status: ' + value[4] + '</div>' + '<div class = "ChildRow">From: : ' + value[5] + '</div>' + '<div class = "ChildRow">To:' + value[6] + '</div>';
     }
-  ],
-    columns : [
-        { width : '20px' },
-        { width : '80px' },
-        { width : '80px' },
-        { width : '20px' },
-        { width : '20px' },
-        { width : '25px' },
-    { width : '25px' }
-    ] ,
-      responsive: {
-            details: {
-                display: $.fn.dataTable.Responsive.display.modal( {
-                    header: function ( row ) {
-                        var data = row.data();
-                        return 'Details for '+data[0]+' '+data[1];
-                    }
-                } ),
-                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                    tableClass: 'table'
-                } )
-            }
+
+    //Conversion to the datatable format
+	  $("#table1").append(txt);
+    $(document).ready(function() {
+	     var dataTable = $('#table1').DataTable( {
+         autoWidth: false,
+         'columnDefs' : [
+           {
+             'targets' : [ 2, 3, 4, 5, 6 ],
+             'visible' : false
+           }
+         ],
+         "columns": [
+               {
+                   "className":      'details-control',
+                   "orderable":      false,
+                  'targets' :      1
+                }],
+                order: [1, 'asc']
+      } );
+
+
+      //creates child row when clicked
+      $('#table1').on('click', 'td.details-control', function () {
+           var tr = $(this).closest('tr');
+           var row = dataTable.row(tr);
+
+           if ( row.child.isShown() ) {
+               // This row is already open - close it
+               row.child.hide();
+               tr.removeClass('shown');
+           }
+           else {
+               // Open this row
+               row.child(format(row.data())).show();
+               tr.addClass('shown');
+           }
+       } );
+
+       var LastStatus;
+       var LastType;
+
+
+
+      //ASSORTED BUTTONS
+      //operating on datatable variable
+
+      //sets filter for trains
+      $("#TrainButton").click(function() {
+        dataTable.columns(0).search("").draw();
+        dataTable.columns(0).search("Metro Train").draw();
+        if($("#Table-Wrapper").is(":visible")){
+          $("#Table-Wrapper").toggle('fast');
+        }
+        $("#StatusButtons").toggle('fast');
+      });
+
+      //sets filter for trams
+      $("#TramButton").click(function() {
+        dataTable.columns(0).search("").draw();
+        dataTable.columns(0).search("Metro Tram").draw();
+        if($("#Table-Wrapper").is(":visible")){
+          $("#Table-Wrapper").toggle('fast');
+        }
+        $("#StatusButtons").toggle('fast');
+      });
+
+      //sets filter for buses
+      $("#BusButton").click(function() {
+        dataTable.columns(0).search("").draw();
+        dataTable.columns(0).search("Metro Bus").draw();
+        if($("#Table-Wrapper").is(":visible")){
+          $("#Table-Wrapper").toggle('fast');
+        }
+        $("#StatusButtons").toggle('fast');
+      });
+
+      //sets filter to planned works
+      $("#PlannedButton").click(function() {
+
+        if($("#Table-Wrapper").is(":visible") && LastStatus == "Current"){
+          $("#Table-Wrapper").toggle('fast');
+          dataTable.columns(4).search('').draw();
+          LastStatus = "Planned";
+          dataTable.columns(4).search("Planned").draw();
+          $("#Table-Wrapper").toggle('fast');
+        }
+        else if($("#Table-Wrapper").is(":visible")) {
+          LastStatus = '';
+          $("#Table-Wrapper").toggle('fast');
+        }
+        else{
+          dataTable.columns(4).search("Planned").draw();
+          LastStatus = "Planned";
+          $("#Table-Wrapper").toggle('fast');
         }
 
-    /*
-        initComplete: function () {
-            this.api().columns([0,3,4]).every( function () {
-                var column = this;
-                var select = $('<select><option value="">Show All</option></select>')
-                    .appendTo( $(column.footer()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
+      });
 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-        }*/
-    } );
+      //sets filter to current works
+      $("#CurrentButton").click(function() {
 
-    var LastStatus;
+        if($("#Table-Wrapper").is(":visible") && LastStatus == "Planned"){
+          $("#Table-Wrapper").toggle('fast');
+          dataTable.columns(4).search('').draw();
+          LastStatus = "Current";
+          dataTable.columns(4).search("Current").draw();
+          $("#Table-Wrapper").toggle('fast');
+        }
+        else if($("#Table-Wrapper").is(":visible")) {
+          LastStatus = '';
+          $("#Table-Wrapper").toggle('fast');
+        }
+        else{
+          dataTable.columns(4).search("Current").draw();
+          LastStatus = "Current";
+          $("#Table-Wrapper").toggle('fast');
+        }
 
-    //Sets filter to Trains
-    $("#TrainButton").click(function() {
-      dataTable.columns(0).search("").draw();
-      dataTable.columns(0).search("Metro Train").draw();
-      if($("#Table-Wrapper").is(":visible")){
-        $("#Table-Wrapper").toggle('slow');
-      }
-      $("#StatusButtons").toggle('slow');
-    });
+          });
 
-    //sets filter for trams
-    $("#TramButton").click(function() {
-      dataTable.columns(0).search("").draw();
-      dataTable.columns(0).search("Metro Tram").draw();
-      if($("#Table-Wrapper").is(":visible")){
-        $("#Table-Wrapper").toggle('slow');
-      }
-      $("#StatusButtons").toggle('slow');
-    });
-
-    //sets filter for buses
-    $("#BusButton").click(function() {
-      dataTable.columns(0).search("").draw();
-      dataTable.columns(0).search("Metro Bus").draw();
-      if($("#Table-Wrapper").is(":visible")){
-        $("#Table-Wrapper").toggle('slow');
-      }
-      $("#StatusButtons").toggle('slow');
-    });
-
-    //sets filter to planned works
-    $("#PlannedButton").click(function() {
-
-      if($("#Table-Wrapper").is(":visible") && LastStatus == "Current"){
-        $("#Table-Wrapper").toggle('slow');
-        dataTable.columns(4).search('').draw();
-        LastStatus = "Planned";
-        dataTable.columns(4).search("Planned").draw();
-        $("#Table-Wrapper").toggle('slow');
-      }
-      else if($("#Table-Wrapper").is(":visible")) {
-        LastStatus = '';
-        $("#Table-Wrapper").toggle('slow');
-      }
-      else{
-        dataTable.columns(4).search("Planned").draw();
-        LastStatus = "Planned";
-        $("#Table-Wrapper").toggle('slow');
-      }
+      } );
+      });
 
 
-    });
-
-    //sets filter to current works
-    $("#CurrentButton").click(function() {
-
-      if($("#Table-Wrapper").is(":visible") && LastStatus == "Planned"){
-        $("#Table-Wrapper").toggle('slow');
-        dataTable.columns(4).search('').draw();
-        LastStatus = "Current";
-        dataTable.columns(4).search("Current").draw();
-        $("#Table-Wrapper").toggle('slow');
-      }
-      else if($("#Table-Wrapper").is(":visible")) {
-        LastStatus = '';
-        $("#Table-Wrapper").toggle('slow');
-      }
-      else{
-        dataTable.columns(4).search("Current").draw();
-        LastStatus = "Current";
-        $("#Table-Wrapper").toggle('slow');
-      }
-
-    });
-
-
-    });
 
 
 
