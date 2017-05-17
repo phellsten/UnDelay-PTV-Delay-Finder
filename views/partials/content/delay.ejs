@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="routelist">Route</label>
-                    <input type="text" name="routelist" id="routelist" class="form-control" placeholder="Sunbury" list="routes-data" required>
+                    <input type="text" name="routelist" id="routelist" class="form-control" list="routes-data" autocomplete="off" required>
                     <datalist id="routes-data"></datalist>
                 </div>
                 <div class="form-group">
@@ -60,6 +60,8 @@
                         request.onreadystatechange = function(response) {
                             if (request.readyState === 4) {
                                 if (request.status === 200) {
+                                    // Clear <datalist>
+                                    dataList.innerHTML = "";
                                     // Parse the JSON
                                     var jsonOptions = JSON.parse(request.responseText);
                                     // Loop over the JSON array.
