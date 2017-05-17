@@ -3,6 +3,8 @@ body {
   padding-right: 2%;
   padding-bottom: 20px;
   color: black;
+  background: #000000 url("../images/web/city-map.jpg") no-repeat center fixed;
+
 }
 
 #map {
