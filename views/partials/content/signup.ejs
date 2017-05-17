@@ -1,74 +1,80 @@
-
-  <!-- Main content -->
-  <div class="container">
+<!-- Main content -->
+<div class="container">
     <div class="row main">
-				<div class="panel-heading">
-	               <div class="panel-title text-center">
-	               		<h1 class="title">Sign Up</h1>
-	               		<hr />
-	               	</div>
-	            </div>
-				<div class="main-login main-center">
-          <% if (message.length > 0) { %>
-		         <div class="alert alert-danger"><%= message %></div>
-	        <% } %>
-					<form class="form-horizontal" method="post" action="#" onsubmit="return validateForm()">
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Your Email</label>
-              </p> <p>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" onblur="validateEmail('email', 'emailError')"/>
-								</div>
-								<span id="emailError" style="display: none;"></span>
-							</div>
-						</div>
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Sign Up</h1>
+                <hr/>
+            </div>
+        </div>
+        <div class="main-login main-center">
+            <% if (message.length > 0) { %>
+            <div class="alert alert-danger"><%= message %></div>
+            <% } %>
+            <form class="form-horizontal" method="post" action="#" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                    </p> <p>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="email" class="form-control" name="email" id="email"
+                                   placeholder="Enter your Email" onblur="validateEmail('email', 'emailError')"/>
+                        </div>
+                        <span id="emailError" style="display: none;"></span>
+                    </div>
+                </div>
 
-						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Username</label>
-              </p> <p>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username" onblur="validateName('username', 'usernameError')"/>
-								</div>
-								<span id="usernameError" style="display: none;"></span>
-							</div>
-						</div>
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    </p> <p>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="username" id="username"
+                                   placeholder="Enter your Username"
+                                   onblur="validateName('username', 'usernameError')"/>
+                        </div>
+                        <span id="usernameError" style="display: none;"></span>
+                    </div>
+                </div>
 
-						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Password</label>
-              </p> <p>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" onblur="validatePass('password', 'confirm', 'passError', 'confError')"/>
-								</div>
-								<span id="passError" style="display: none;"></span>
-							</div>
-						</div>
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    </p> <p>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="password" id="password"
+                                   placeholder="Enter your Password"
+                                   onblur="validatePass('password', 'confirm', 'passError', 'confError')"/>
+                        </div>
+                        <span id="passError" style="display: none;"></span>
+                    </div>
+                </div>
 
-						<div class="form-group">
-							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-              </p> <p>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" onblur="validatePass('password', 'confirm', 'passError', 'confError')"/>
-								</div>
-                                <div class="g-recaptcha" data-sitekey="6LeW2CEUAAAAANyyRXRvvBGo8lkFcgWFK5sci0Ut"></div>
-								<span id="confError" style="display: none;"></span>
-							</div>
-						</div>
-            <p>Already have an account? <a href="/login">Login</a></p>
-                        <span id="subError" style="display: none;"></span>
-						<div class="form-group ">
-							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-						</div>
-					</form>
-				</div>
-			</div>
-  </div>
-  <script src="js/signupvalidation.js"></script>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                    </p> <p>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" name="confirm" id="confirm"
+                                   placeholder="Confirm your Password"
+                                   onblur="validatePass('password', 'confirm', 'passError', 'confError')"/>
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="6LeW2CEUAAAAANyyRXRvvBGo8lkFcgWFK5sci0Ut"></div>
+                        <span id="confError" style="display: none;"></span>
+                    </div>
+                </div>
+                <p>Already have an account? <a href="/login">Login</a></p>
+                <span id="subError" style="display: none;"></span>
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="js/signupvalidation.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>

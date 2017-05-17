@@ -5,7 +5,7 @@ body {
     padding-top: 70px;
     background: #f2b035;
     font-family: 'Roboto', sans-serif;
-    overflow-y:scroll;
+    overflow-y: scroll;
 }
 
 section.centered {
@@ -78,12 +78,12 @@ button.btn-continue {
     margin-right: 6px;
 }
 
-.form-group{
-	margin-bottom: 15px;
+.form-group {
+    margin-bottom: 15px;
 }
 
-label{
-	margin-bottom: 15px;
+label {
+    margin-bottom: 15px;
 }
 
 input,
@@ -92,8 +92,8 @@ input::-webkit-input-placeholder {
     padding-top: 3px;
 }
 
-.main-login{
- 	background-color: #fff;
+.main-login {
+    background-color: #fff;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -104,21 +104,21 @@ input::-webkit-input-placeholder {
 
 }
 
-.main-center{
- 	margin-top: 30px;
- 	margin: 0 auto;
- 	max-width: 330px;
+.main-center {
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 330px;
     padding: 40px 40px;
 
 }
 
-.login-button{
-	margin-top: 5px;
+.login-button {
+    margin-top: 5px;
 }
 
-.login-register{
-	font-size: 11px;
-	text-align: center;
+.login-register {
+    font-size: 11px;
+    text-align: center;
 }
 
 .fa:hover {
@@ -150,13 +150,12 @@ input::-webkit-input-placeholder {
     margin: 5px 2px;
 }
 
-
-.navbar-brand{
-  -webkit-user-select: none;
-  padding: 0 15px;
+.navbar-brand {
+    -webkit-user-select: none;
+    padding: 0 15px;
 }
 
-.navbar-brand>img {
-  -webkit-user-drag: none;
-  max-height: 48px;
+.navbar-brand > img {
+    -webkit-user-drag: none;
+    max-height: 48px;
 }

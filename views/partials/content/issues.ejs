@@ -1,289 +1,286 @@
-
 <div class="col-sm-10 center">
-  <div class="jumbotron issues-Box">
+    <div class="jumbotron issues-Box">
 
-    <h1 class="page-title">Current Issues</h1>
-    <p>   Click on your transport choice to see the relevant delays:  </p>
+        <h1 class="page-title">Current Issues</h1>
+        <p> Click on your transport choice to see the relevant delays: </p>
 
-    <div id = 'TransportDivId' class = 'TransportDiv'>
-        <button id = "TrainButton" type="button" class = 'FilterButton button1 btn btn-default' >Metro Trains</button>
-        <button id = "TramButton" type="button" class = 'FilterButton button1 btn btn-default' >Metro Tram</button>
-        <button id = "BusButton" type="button" class = 'FilterButton button1 btn btn-default' >Metro Bus</button>
-    </div>
-
-    <div id = "StatusButtons">
-        <p>Status of works?</p>
-        <button id = "PlannedButton" type="button" class = 'FilterButton button2 btn btn-default' >Planned Works</button>
-        <button id = "CurrentButton" type="button" class = 'FilterButton button2 btn btn-default' >Current Works</button>
-    </div>
-
-  <div class="row">
-    <div class="col-sm-10 center">
-      <p>
-        <div  id = 'Table-Wrapper' class="panel panel-default">
-
-          <table id="table1" class="table-responsive display row-border inventoryRelated">
-		  <thead>
-		  <tr>
-			<th style="width: 20px">Method</th>
-            <th style="width: 80px">Title</th>
-            <th style="width: 80px">Description</th>
-            <th style="width: 20px">Type</th>
-            <th style="width: 20px">Status</th>
-            <th style="width: 25px">From</th>
-            <th style="width: 25px">To</th>
-		  </tr>
-		  </thead>
-		  <tfoot>
-		   <tr>
-			<th style="width: 20px">Method</th>
-            <th style="width: 80px">Title</th>
-            <th style="width: 80px">Description</th>
-            <th style="width: 20px">Type</th>
-            <th style="width: 20px">Status</th>
-            <th style="width: 25px">From</th>
-            <th style="width: 25px">To</th>
-		  </tr>
-		  </tfoot>
-		  <tbody>
-          </table>
+        <div id='TransportDivId' class='TransportDiv'>
+            <button id="TrainButton" type="button" class='FilterButton button1 btn btn-default'>Metro Trains</button>
+            <button id="TramButton" type="button" class='FilterButton button1 btn btn-default'>Metro Tram</button>
+            <button id="BusButton" type="button" class='FilterButton button1 btn btn-default'>Metro Bus</button>
         </div>
-      </div>
 
+        <div id="StatusButtons">
+            <p>Status of works?</p>
+            <button id="PlannedButton" type="button" class='FilterButton button2 btn btn-default'>Planned Works</button>
+            <button id="CurrentButton" type="button" class='FilterButton button2 btn btn-default'>Current Works</button>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-10 center">
+                <p>
+                <div id='Table-Wrapper' class="panel panel-default">
+
+                    <table id="table1" class="table-responsive display row-border inventoryRelated">
+                        <thead>
+                        <tr>
+                            <th style="width: 20px">Method</th>
+                            <th style="width: 80px">Title</th>
+                            <th style="width: 80px">Description</th>
+                            <th style="width: 20px">Type</th>
+                            <th style="width: 20px">Status</th>
+                            <th style="width: 25px">From</th>
+                            <th style="width: 25px">To</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th style="width: 20px">Method</th>
+                            <th style="width: 80px">Title</th>
+                            <th style="width: 80px">Description</th>
+                            <th style="width: 20px">Type</th>
+                            <th style="width: 20px">Status</th>
+                            <th style="width: 25px">From</th>
+                            <th style="width: 25px">To</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <script>
+
+            function NullRep(value) {
+                if (value == null) {
+                    return "N/A";
+                }
+                else {
+                    return value;
+                }
+            }
+
+            // Fetch PTV API Data
+            $.getJSON("https://timetableapi.ptv.vic.gov.au/v3/disruptions?devid=3000202&signature=91465C13C78C808005461904E474419A0247C54E", function (json) {
+                console.log(json);
+
+                // Build table from PTV API
+                var txt = "";
+                var data = json["disruptions"]["metro_train"];
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    txt += "<tr><td>Metro Train</td><td>" + data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
+                }
+
+
+                var data = json["disruptions"]["metro_bus"];
+                for (var i = 0; i < data.length; i++) {
+                    txt += "<tr><td>Metro Bus</td><td>" + data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
+                }
+                var data = json["disruptions"]["metro_tram"];
+                for (var i = 0; i < data.length; i++) {
+                    txt += "<tr><td>Metro Tram</td><td>" + data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
+                }
+                var data = json["disruptions"]["regional_train"];
+                for (var i = 0; i < data.length; i++) {
+                    txt += "<tr><td>Regional Train</td><td>" + data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
+                }
+                var data = json["disruptions"]["regional_bus"];
+                for (var i = 0; i < data.length; i++) {
+                    txt += "<tr><td>Regional Bus</td><td>" + data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
+                }
+                var data = json["disruptions"]["regional_coach"];
+                for (var i = 0; i < data.length; i++) {
+                    txt += "<tr><td>Regional Coach</td><td>" + data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
+                }
+                txt += "</tbody>";
+
+
+                $('#Table-Wrapper').hide() //Hiding the table initially
+                $('#StatusButtons').hide()
+
+
+                // Formatting function for row details
+                function format(value) {
+                    return '<div class = "ChildRow">Transport type: ' + value[0] + '</div>' + '<div class = "ChildRow">Description: ' + value[2] + '</div>' + '<div class = "ChildRow">Disruption type: ' + value[3] + '</div>' + '<div class = "ChildRow">Status: ' + value[4] + '</div>' + '<div class = "ChildRow">From: : ' + value[5] + '</div>' + '<div class = "ChildRow">To:' + value[6] + '</div>';
+                }
+
+                //Conversion to the datatable format
+                $("#table1").append(txt);
+                $(document).ready(function () {
+                    var dataTable = $('#table1').DataTable({
+                        autoWidth: false,
+                        'columnDefs': [
+                            {
+                                'targets': [2, 3, 4, 5, 6],
+                                'visible': false
+                            }
+                        ],
+                        "columns": [
+                            {
+                                "className": 'details-control',
+                                "orderable": false,
+                                'targets': 1
+                            }],
+                        order: [1, 'asc']
+                    });
+
+
+                    //creates child row when clicked
+                    $('#table1').on('click', 'td.details-control', function () {
+                        var tr = $(this).closest('tr');
+                        var row = dataTable.row(tr);
+
+                        if (row.child.isShown()) {
+                            // This row is already open - close it
+                            row.child.hide();
+                            tr.removeClass('shown');
+                        }
+                        else {
+                            // Open this row
+                            row.child(format(row.data())).show();
+                            tr.addClass('shown');
+                        }
+                    });
+
+                    var LastStatus;
+                    var LastType;
+
+
+                    //ASSORTED BUTTONS
+                    //operating on datatable variable
+
+                    //sets filter for trains
+                    $("#TrainButton").click(function () {
+
+                        if ($("#Table-Wrapper").is(":visible") && LastType != 'Metro Train') {
+                            LastType = 'Metro Train';
+                            $("#Table-Wrapper").toggle('fast');
+                            dataTable.columns(0).search("").draw();
+                            dataTable.columns(0).search(LastType).draw();
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else if ($("#Table-Wrapper").is(":visible")) {
+                            LastType = '';
+
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else {
+                            LastType = 'metro Train';
+                            dataTable.columns(0).search(LastType).draw();
+                            $("#StatusButtons").toggle('fast');
+                        }
+
+                    });
+
+                    //sets filter for trams
+                    $("#TramButton").click(function () {
+
+                        if ($("#Table-Wrapper").is(":visible") && LastType != 'Metro Tram') {
+                            LastType = 'Metro Tram';
+                            $("#Table-Wrapper").toggle('fast');
+                            dataTable.columns(0).search("").draw();
+                            dataTable.columns(0).search(LastType).draw();
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else if ($("#Table-Wrapper").is(":visible")) {
+                            LastType = '';
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else {
+                            LastType = 'Metro Tram';
+                            dataTable.columns(0).search(LastType).draw();
+                            $("#StatusButtons").toggle('fast');
+
+                        }
+
+                    });
+
+                    //sets filter for buses
+                    $("#BusButton").click(function () {
+
+                        if ($("#Table-Wrapper").is(":visible") && LastType != "Metro Bus") {
+                            $("#Table-Wrapper").toggle('fast');
+                            LastType = 'Metro Bus';
+                            dataTable.columns(0).search("").draw();
+                            dataTable.columns(0).search(LastType).draw();
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else if ($("#Table-Wrapper").is(":visible")) {
+                            LastType = '';
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else {
+                            LastType = 'Metro Bus';
+                            dataTable.columns(0).search(LastType).draw();
+                            $("#StatusButtons").toggle('fast');
+
+                        }
+                    });
+
+                    //sets filter to planned works
+                    $("#PlannedButton").click(function () {
+
+                        if ($("#Table-Wrapper").is(":visible") && LastStatus == "Current") {
+                            $("#Table-Wrapper").toggle('fast');
+                            dataTable.columns(4).search('').draw();
+                            LastStatus = "Planned";
+                            dataTable.columns(4).search("Planned").draw();
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else if ($("#Table-Wrapper").is(":visible")) {
+                            LastStatus = '';
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else {
+                            dataTable.columns(4).search("Planned").draw();
+                            LastStatus = "Planned";
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+
+
+                    });
+
+                    //sets filter to current works
+                    $("#CurrentButton").click(function () {
+
+                        if ($("#Table-Wrapper").is(":visible") && LastStatus == "Planned") {
+                            $("#Table-Wrapper").toggle('fast');
+                            dataTable.columns(4).search('').draw();
+                            LastStatus = "Current";
+                            dataTable.columns(4).search("Current").draw();
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else if ($("#Table-Wrapper").is(":visible")) {
+                            LastStatus = '';
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+                        else {
+                            dataTable.columns(4).search("Current").draw();
+                            LastStatus = "Current";
+                            $("#Table-Wrapper").toggle('fast');
+                        }
+
+                    });
+
+                });
+            });
+
+
+            // Highlight buttons upon clicking
+
+            $('.button1').on('click', function () {
+                $('.button1').removeClass('active');
+                $(this).addClass('active');
+
+            });
+
+            $('.button2').on('click', function () {
+                $('.button2').removeClass('active');
+                $(this).addClass('active');
+
+            });
+        </script>
     </div>
-<script>
-
-  function NullRep(value){
-    if(value == null){
-      return "N/A";
-    }
-    else{
-      return value;
-    }
-  }
-
-    // Fetch PTV API Data
-	  $.getJSON("https://timetableapi.ptv.vic.gov.au/v3/disruptions?devid=3000202&signature=91465C13C78C808005461904E474419A0247C54E", function(json) {
-      console.log(json);
-
-      // Build table from PTV API
-      var txt = "";
-      var data = json["disruptions"]["metro_train"];
-      console.log(data);
-      for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Metro Train</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
-      }
-
-
-      var data = json["disruptions"]["metro_bus"];
-      for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Metro Bus</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
-      }
-      var data = json["disruptions"]["metro_tram"];
-      for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Metro Tram</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
-      }
-      var data = json["disruptions"]["regional_train"];
-      for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Regional Train</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
-      }
-      var data = json["disruptions"]["regional_bus"];
-      for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Regional Bus</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
-      }
-      var data = json["disruptions"]["regional_coach"];
-      for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Regional Coach</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
-      }
-	  txt += "</tbody>";
-
-
-    $('#Table-Wrapper').hide() //Hiding the table initially
-    $('#StatusButtons').hide()
-
-
-    // Formatting function for row details
-    function format(value) {
-        return '<div class = "ChildRow">Transport type: ' + value[0] + '</div>' + '<div class = "ChildRow">Description: ' + value[2] + '</div>' + '<div class = "ChildRow">Disruption type: ' + value[3] + '</div>' + '<div class = "ChildRow">Status: ' + value[4] + '</div>' + '<div class = "ChildRow">From: : ' + value[5] + '</div>' + '<div class = "ChildRow">To:' + value[6] + '</div>';
-    }
-
-    //Conversion to the datatable format
-	  $("#table1").append(txt);
-    $(document).ready(function() {
-	     var dataTable = $('#table1').DataTable( {
-         autoWidth: false,
-         'columnDefs' : [
-           {
-             'targets' : [ 2, 3, 4, 5, 6 ],
-             'visible' : false
-           }
-         ],
-         "columns": [
-               {
-                   "className":      'details-control',
-                   "orderable":      false,
-                  'targets' :      1
-                }],
-                order: [1, 'asc']
-      } );
-
-
-      //creates child row when clicked
-      $('#table1').on('click', 'td.details-control', function () {
-           var tr = $(this).closest('tr');
-           var row = dataTable.row(tr);
-
-           if ( row.child.isShown() ) {
-               // This row is already open - close it
-               row.child.hide();
-               tr.removeClass('shown');
-           }
-           else {
-               // Open this row
-               row.child(format(row.data())).show();
-               tr.addClass('shown');
-           }
-       } );
-
-       var LastStatus;
-       var LastType;
-
-
-
-      //ASSORTED BUTTONS
-      //operating on datatable variable
-
-      //sets filter for trains
-      $("#TrainButton").click(function() {
-
-        if($("#Table-Wrapper").is(":visible") && LastType != 'Metro Train'){
-          LastType = 'Metro Train';
-          $("#Table-Wrapper").toggle('fast');
-          dataTable.columns(0).search("").draw();
-          dataTable.columns(0).search(LastType).draw();
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else if($("#Table-Wrapper").is(":visible"))
-        {
-          LastType = '';
-
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else{
-          LastType = 'metro Train';
-          dataTable.columns(0).search(LastType).draw();
-          $("#StatusButtons").toggle('fast');
-        }
-
-      });
-
-      //sets filter for trams
-      $("#TramButton").click(function() {
-
-        if($("#Table-Wrapper").is(":visible") && LastType != 'Metro Tram'){
-          LastType = 'Metro Tram';
-          $("#Table-Wrapper").toggle('fast');
-          dataTable.columns(0).search("").draw();
-          dataTable.columns(0).search(LastType).draw();
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else if($("#Table-Wrapper").is(":visible")){
-          LastType = '';
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else{
-          LastType = 'Metro Tram';
-          dataTable.columns(0).search(LastType).draw();
-          $("#StatusButtons").toggle('fast');
-
-        }
-
-      });
-
-      //sets filter for buses
-      $("#BusButton").click(function() {
-
-        if($("#Table-Wrapper").is(":visible") && LastType != "Metro Bus"){
-          $("#Table-Wrapper").toggle('fast');
-          LastType = 'Metro Bus';
-          dataTable.columns(0).search("").draw();
-          dataTable.columns(0).search(LastType).draw();
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else if($("#Table-Wrapper").is(":visible")){
-          LastType = '';
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else{
-          LastType = 'Metro Bus';
-          dataTable.columns(0).search(LastType).draw();
-          $("#StatusButtons").toggle('fast');
-
-        }
-      });
-
-      //sets filter to planned works
-      $("#PlannedButton").click(function() {
-
-        if($("#Table-Wrapper").is(":visible") && LastStatus == "Current"){
-          $("#Table-Wrapper").toggle('fast');
-          dataTable.columns(4).search('').draw();
-          LastStatus = "Planned";
-          dataTable.columns(4).search("Planned").draw();
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else if($("#Table-Wrapper").is(":visible")) {
-          LastStatus = '';
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else{
-          dataTable.columns(4).search("Planned").draw();
-          LastStatus = "Planned";
-          $("#Table-Wrapper").toggle('fast');
-        }
-
-
-      });
-
-      //sets filter to current works
-      $("#CurrentButton").click(function() {
-
-        if($("#Table-Wrapper").is(":visible") && LastStatus == "Planned"){
-          $("#Table-Wrapper").toggle('fast');
-          dataTable.columns(4).search('').draw();
-          LastStatus = "Current";
-          dataTable.columns(4).search("Current").draw();
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else if($("#Table-Wrapper").is(":visible")) {
-          LastStatus = '';
-          $("#Table-Wrapper").toggle('fast');
-        }
-        else{
-          dataTable.columns(4).search("Current").draw();
-          LastStatus = "Current";
-          $("#Table-Wrapper").toggle('fast');
-        }
-
-          });
-
-      } );
-      });
-
-
-// Highlight buttons upon clicking
-
-$('.button1').on('click', function(){
-    $('.button1').removeClass('active');
-    $(this).addClass('active');
-
-});
-
-$('.button2').on('click', function(){
-    $('.button2').removeClass('active');
-    $(this).addClass('active');
-
-});
-</script>
-</div>
 </div>

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     var map = L.map('minimap', {
         center: [-37.815, 144.965],

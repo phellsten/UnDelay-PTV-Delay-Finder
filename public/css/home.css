@@ -4,16 +4,16 @@ body {
 }
 
 .blur img:hover {
-opacity: 0.7;
-filter: alpha(opacity=30);
+    opacity: 0.7;
+    filter: alpha(opacity=30);
 }
 
-.img-border{
-  width:100%;
-  vertical-align:bottom;
+.img-border {
+    width: 100%;
+    vertical-align: bottom;
 }
 
 #minimap {
-  width: 100%;
-  height: 300px;
+    width: 100%;
+    height: 300px;
 }

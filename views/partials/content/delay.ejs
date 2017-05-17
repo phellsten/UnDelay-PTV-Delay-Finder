@@ -15,12 +15,14 @@
                 </div>
                 <div class="form-group">
                     <label for="routelist">Route</label>
-                    <input type="text" name="routelist" id="routelist" class="form-control" list="routes-data" autocomplete="off" required>
+                    <input type="text" name="routelist" id="routelist" class="form-control" list="routes-data"
+                           autocomplete="off" required>
                     <datalist id="routes-data"></datalist>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" name = "description" id="description" class="form-control" placeholder="401 bus delayed" required>
+                    <input type="text" name="description" id="description" class="form-control"
+                           placeholder="401 bus delayed" required>
                 </div>
 
                 <div class="form-group">
@@ -33,8 +35,10 @@
                     </select>
                     <br>
 
-                    <input type="text" name="delaytype" formenctype="" class="form-control" id="delaytype" style= 'display:none' placeholder = 'Ticket Inspectors'/>
-                    <input type="hidden" class="form-control" id="locationdata" name="locationdata" style="display: none;" value="default"/>
+                    <input type="text" name="delaytype" formenctype="" class="form-control" id="delaytype"
+                           style='display:none' placeholder='Ticket Inspectors'/>
+                    <input type="hidden" class="form-control" id="locationdata" name="locationdata"
+                           style="display: none;" value="default"/>
 
                 </div>
 
@@ -57,7 +61,7 @@
                         var input = document.getElementById("routelist");
 
                         var request = new XMLHttpRequest();
-                        request.onreadystatechange = function(response) {
+                        request.onreadystatechange = function (response) {
                             if (request.readyState === 4) {
                                 if (request.status === 200) {
                                     // Clear <datalist>
@@ -65,7 +69,7 @@
                                     // Parse the JSON
                                     var jsonOptions = JSON.parse(request.responseText);
                                     // Loop over the JSON array.
-                                    jsonOptions.forEach(function(item) {
+                                    jsonOptions.forEach(function (item) {
                                         // Create a new <option> element.
                                         var option = document.createElement('option');
                                         // Set the value using the item in the JSON array.
@@ -74,7 +78,7 @@
                                         dataList.appendChild(option);
                                     });
                                     // Update the placeholder text.
-                                    input.placeholder = "e.g. "+jsonOptions[0];
+                                    input.placeholder = "e.g. " + jsonOptions[0];
                                 } else {
                                     // An error occured :(
                                     input.placeholder = "Couldn't load route names :(";
@@ -84,7 +88,7 @@
                         // Update the placeholder text.
                         input.placeholder = "Loading routes...";
                         // Set up and make the request.
-                        request.open('GET', '/map/route_names/'+document.getElementById("transport-type").value, true);
+                        request.open('GET', '/map/route_names/' + document.getElementById("transport-type").value, true);
                         request.send();
                     }
 
@@ -95,7 +99,7 @@
                         var dataList = document.getElementById("routes-data");
                         var input = document.getElementById("routelist");
                         var options = dataList.options;
-                        for (var i=0; i<options.length; i++) {
+                        for (var i = 0; i < options.length; i++) {
                             if (input.value === options[i].value) {
                                 validRoute = true;
                             }
@@ -116,7 +120,12 @@
 </div>
 
 
-
-      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>

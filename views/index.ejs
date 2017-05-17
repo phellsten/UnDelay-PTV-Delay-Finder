@@ -2,46 +2,46 @@
 <html lang="en">
 <!-- Render header and navbar for each page-->
 <head>
-    <%include partials/templates/head.ejs%>
+    <% include partials/templates/head.ejs %>
 </head>
 
 <body>
-    <header>
-        <%include partials/templates/navbar.ejs%>
+<header>
+    <% include partials/templates/navbar.ejs %>
 
-    </header>
+</header>
 
-    <!-- Render appropriate content -->
-    <section>
-        <%if(pageId==='home'){%>
-        <%include partials/content/landingPage.ejs%>
-        <%}else if(pageId==='about'){%>
-        <%include partials/content/about.ejs%>
-        <%}else if(pageId==='issues'){%>
-        <%include partials/content/issues.ejs%>
-        <%}else if(pageId==='map'){%>
-        <%include partials/content/map.ejs%>
-        <%}else if(pageId==='delay'){%>
-        <%include partials/content/delay.ejs%>
-        <%}else if(pageId==='login'){%>
-        <%include partials/content/login.ejs%>
-        <%}else if(pageId==='signup'){%>
-        <%include partials/content/signup.ejs%>
-        <%}else if(pageId==='delay2'){%>
-        <%include partials/content/submit.ejs%>
-        <%}else if(pageId==='profile'){%>
-        <%include partials/content/profile.ejs%>
-        <%}%>
+<!-- Render appropriate content -->
+<section>
+    <% if(pageId === 'home'){ %>
+    <% include partials/content/landingPage.ejs %>
+    <% }else if(pageId === 'about'){ %>
+    <% include partials/content/about.ejs %>
+    <% }else if(pageId === 'issues'){ %>
+    <% include partials/content/issues.ejs %>
+    <% }else if(pageId === 'map'){ %>
+    <% include partials/content/map.ejs %>
+    <% }else if(pageId === 'delay'){ %>
+    <% include partials/content/delay.ejs %>
+    <% }else if(pageId === 'login'){ %>
+    <% include partials/content/login.ejs %>
+    <% }else if(pageId === 'signup'){ %>
+    <% include partials/content/signup.ejs %>
+    <% }else if(pageId === 'delay2'){ %>
+    <% include partials/content/submit.ejs %>
+    <% }else if(pageId === 'profile'){ %>
+    <% include partials/content/profile.ejs %>
+    <% } %>
 
-    </section>
+</section>
 
-    <!-- Render footer -->
-    <%if(pageId!= 'home' && pageId!=='map' && pageId !== 'issues'){%>
-    <%include partials/templates/generalfooter.ejs%>
-    <%}%>
-    <%if(pageId == 'home'){%>
-    <%include partials/templates/indexfooter.ejs%>
-    <%}%>
+<!-- Render footer -->
+<% if(pageId != 'home' && pageId !== 'map' && pageId !== 'issues'){ %>
+<% include partials/templates/generalfooter.ejs %>
+<% } %>
+<% if(pageId == 'home'){ %>
+<% include partials/templates/indexfooter.ejs %>
+<% } %>
 
 </body>
 

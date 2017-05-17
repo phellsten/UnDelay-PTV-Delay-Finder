@@ -1,12 +1,12 @@
-body{
-  background: #000000 url("../images/web/Stop.jpg") no-repeat center fixed;
-  background-size: cover;
-  text-align: center;
-  color: white;
-  font-family: 'Roboto', sans-serif;
+body {
+    background: #000000 url("../images/web/Stop.jpg") no-repeat center fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
-div.main-center{
+div.main-center {
     background: rgba(0, 0, 0, 0.7);
     border-radius: 25px;
 }

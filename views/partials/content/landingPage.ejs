@@ -1,34 +1,35 @@
 <link href="css/home.css" rel="stylesheet">
 <div class="container">
     <% if (message.length > 0) { %>
-      <div class="alert alert-success alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">×</a><%= message %></div>
+    <div class="alert alert-success alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                          aria-label="close">×</a><%= message %></div>
     <% } %>
     <section>
-      <div class="jumbotron">
-        <section class="centered">
-          <h1 class="site-title">UnDelay</h1>
-          <h2>Helping you get to where you need to go</h2>
-          <br>
-          <br>
-          <div class="row">
-            <a href="/delay" class="btn btn-info" role="button">Report a Delay</a>
-        </section>
-      </div>
+        <div class="jumbotron">
+            <section class="centered">
+                <h1 class="site-title">UnDelay</h1>
+                <h2>Helping you get to where you need to go</h2>
+                <br>
+                <br>
+                <div class="row">
+                    <a href="/delay" class="btn btn-info" role="button">Report a Delay</a>
+            </section>
+        </div>
     </section>
     <div class="row">
-      
-      <div class="col-sm-12">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h3 class="panel-title">Interactive Map</h3>
-            <br>
-            <div class = "blur" id="minimap">
 
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 class="panel-title">Interactive Map</h3>
+                    <br>
+                    <div class="blur" id="minimap">
+
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <script src="js/minimap.js"></script>
+<script src="js/minimap.js"></script>

@@ -4,14 +4,14 @@ body {
     color: #FFFFFF
 }
 
-div.profile-sidebar{
+div.profile-sidebar {
     color: #555;
 }
 
-div.profile-title{
+div.profile-title {
     color: #97bf3f
 }
 
-.table-hover>tbody>tr:hover {
+.table-hover > tbody > tr:hover {
     background-color: #F2B035;
 }
