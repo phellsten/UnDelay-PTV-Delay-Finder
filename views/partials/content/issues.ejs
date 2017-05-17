@@ -6,15 +6,15 @@
     <p>   Click on your transport choice to see the relevant delays:  </p>
 
     <div id = 'TransportDivId' class = 'TransportDiv'>
-        <button id = "TrainButton" type="button" class = 'FilterButton' >Metro Trains</button>
-        <button id = "TramButton" type="button" class = 'FilterButton' >Metro Tram</button>
-        <button id = "BusButton" type="button" class = 'FilterButton' >Metro Bus</button>
+        <button id = "TrainButton" type="button" class = 'FilterButton button1 btn btn-default' >Metro Trains</button>
+        <button id = "TramButton" type="button" class = 'FilterButton button1 btn btn-default' >Metro Tram</button>
+        <button id = "BusButton" type="button" class = 'FilterButton button1 btn btn-default' >Metro Bus</button>
     </div>
 
     <div id = "StatusButtons">
         <p>Status of works?</p>
-        <button id = "PlannedButton" type="button" class = 'FilterButton' >Planned Works</button>
-        <button id = "CurrentButton" type="button" class = 'FilterButton' >Current Works</button>
+        <button id = "PlannedButton" type="button" class = 'FilterButton button2 btn btn-default' >Planned Works</button>
+        <button id = "CurrentButton" type="button" class = 'FilterButton button2 btn btn-default' >Current Works</button>
     </div>
 
   <div class="row">
@@ -271,7 +271,17 @@
 
 
 
+$('.button1').on('click', function(){
+    $('.button1').removeClass('active');
+    $(this).addClass('active');
 
+});
+
+$('.button2').on('click', function(){
+    $('.button2').removeClass('active');
+    $(this).addClass('active');
+
+});
 </script>
 </div>
 </div>
