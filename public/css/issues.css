@@ -4,6 +4,8 @@ body{
   text-align: center;
   color: white;
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding:0;
 }
 
 .center {
@@ -19,9 +21,8 @@ div.issues-Box{
 
 table{
   background: rgba(0, 0, 0, 0.7);
-  border-radius: 50px;
-  display:block;
-  overflow: scroll;	
+  border-radius: 25px;
+  overflow: scroll;
   overflow-y: hidden;
   color: black;
   font-size:	12px;
@@ -31,4 +32,19 @@ table{
 table.dataTable tbody td {
     word-break: break-word;
     vertical-align: top;
+}
+
+
+div.TransportDiv{
+    position: relative;
+    margin-right: 30px;
+    margin-left:  30px;
+}
+
+button.FilterButton{
+  font-size: 24px;
+  color: black;
+  border-radius: 10px;
+  margin-right: 30px;
+  margin-left:  30px;
 }
