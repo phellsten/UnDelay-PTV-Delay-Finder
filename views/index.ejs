@@ -34,9 +34,12 @@
 
     </section>
 
-	<%if(pageId!=='map' && pageId !== 'issues'){%>
-    <%include partials/templates/indexfooter.ejs%>
+	<%if(pageId!= 'home' && pageId!=='map' && pageId !== 'issues'){%>
+    <%include partials/templates/generalfooter.ejs%>
 	<%}%>
+    <%if(pageId == 'home'){%>
+    <%include partials/templates/indexfooter.ejs%>
+    <%}%>
 
 </body>
 
