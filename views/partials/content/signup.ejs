@@ -12,15 +12,16 @@
           <% if (message.length > 0) { %>
 		         <div class="alert alert-danger"><%= message %></div>
 	        <% } %>
-					<form class="form-horizontal" method="post" action="#">
+					<form class="form-horizontal" method="post" action="#" onsubmit="return validateForm()">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Your Email</label>
               </p> <p>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email" onblur="validateEmail('email', 'emailError')"/>
 								</div>
+								<span id="emailError" style="display: none;"></span>
 							</div>
 						</div>
 
@@ -30,8 +31,9 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username" onblur="validateName('username', 'usernameError')"/>
 								</div>
+								<span id="usernameError" style="display: none;"></span>
 							</div>
 						</div>
 
@@ -41,8 +43,9 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" onblur="validatePass('password', 'confirm', 'passError', 'confError')"/>
 								</div>
+								<span id="passError" style="display: none;"></span>
 							</div>
 						</div>
 
@@ -52,11 +55,13 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" onblur="validatePass('password', 'confirm', 'passError', 'confError')"/>
 								</div>
+								<span id="confError" style="display: none;"></span>
 							</div>
 						</div>
             <p>Already have an account? <a href="/login">Login</a></p>
+                        <span id="subError" style="display: none;"></span>
 						<div class="form-group ">
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
 						</div>
@@ -64,3 +69,4 @@
 				</div>
 			</div>
   </div>
+  <script src="js/signupvalidation.js"></script>
