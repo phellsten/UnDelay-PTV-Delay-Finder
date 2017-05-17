@@ -11,3 +11,7 @@ div.profile-sidebar{
 div.profile-title{
     color: #97bf3f
 }
+
+.table-hover>tbody>tr:hover {
+    background-color: #F2B035;
+}
