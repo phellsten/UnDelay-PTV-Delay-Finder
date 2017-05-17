@@ -17,7 +17,7 @@ module.exports = function(app, passport) {
 	// LOGIN ===============================
 	// =====================================
 	// show the login form
-	app.get('/login', function(req, res) {
+	app.get('/login',notLoggedIn, function(req, res) {
 
 		// render the page and pass in any flash data if it exists
 	   res.render('index', {
@@ -29,7 +29,7 @@ module.exports = function(app, passport) {
 
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
-		successRedirect : '/', // redirect to the secure profile section
+		successRedirect : '/',
 		failureRedirect : '/login', // redirect back to the signup page if there is an error
 		failureFlash : true // allow flash messages
 	}));
@@ -38,7 +38,7 @@ module.exports = function(app, passport) {
 	// SIGNUP ==============================
 	// =====================================
 	// show the signup form
-	app.get('/signup', function(req, res) {
+	app.get('/signup', notLoggedIn, function(req, res) {
 
 		// render the page and pass in any flash data if it exists
 		res.render('index', {
@@ -98,7 +98,7 @@ module.exports = function(app, passport) {
   var map = require('../map.js');
   app.use('/map', map);
 
-  app.post('/formsubmit', function(req, res) {
+  app.post('/formsubmit',loginBefore, function(req, res) {
 
       var sanitize = require('mongo-sanitize');
 
@@ -149,7 +149,22 @@ function isLoggedIn(req, res, next) {
 	// if user is authenticated in the session, carry on
 	if (req.isAuthenticated())
 		return next();
-
 	// if they aren't redirect them to the home page
 	res.redirect('/');
+}
+
+function loginBefore(req, res, next) {
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+    // if they aren't redirect them to the home page
+    res.redirect('/login');
+}
+
+function notLoggedIn(req, res, next){
+    if (req.isAuthenticated())
+        res.redirect('/');
+    else{
+        return next();
+    }
 }
