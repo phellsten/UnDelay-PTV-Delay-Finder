@@ -4,12 +4,25 @@
 
     <h1 class="page-title">Current Issues</h1>
     <p>   Click on your transport choice to see the relevant delays:  </p>
-	
+
+    <div id = 'TransportDivId' class = 'TransportDiv'>
+        <button id = "TrainButton" type="button" class = 'FilterButton' >Metro Trains</button>
+        <button id = "TramButton" type="button" class = 'FilterButton' >Metro Tram</button>
+        <button id = "BusButton" type="button" class = 'FilterButton' >Metro Bus</button>
+    </div>
+
+    <div id = "StatusButtons">
+        <p>Status of works?</p>
+        <button id = "PlannedButton" type="button" class = 'FilterButton' >Planned Works</button>
+        <button id = "CurrentButton" type="button" class = 'FilterButton' >Current Works</button>
+    </div>
+
   <div class="row">
     <div class="col-sm-10 center">
       <p>
-        <div class="panel panel-default">
-          <table id="table1" class="table table-responsive table-striped table-bordered">
+        <div  id = 'Table-Wrapper' class="panel panel-default">
+
+          <table id="table1" class="table table-responsive table-striped table-bordered inventoryRelated">
 		  <thead>
 		  <tr>
 			<th style="width: 20px">Method</th>
@@ -36,50 +49,88 @@
           </table>
         </div>
       </div>
-	  	  
+
     </div>
 <script>
+
+  function NullRep(value){
+    if(value == null){
+      return "N/A";
+    }
+    else{
+      return value;
+    }
+  }
+
+
 	  $.getJSON("https://timetableapi.ptv.vic.gov.au/v3/disruptions?devid=3000202&signature=91465C13C78C808005461904E474419A0247C54E", function(json) {
       console.log(json);
       var txt = "";
       var data = json["disruptions"]["metro_train"];
       console.log(data);
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Metro Train</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+        txt += "<tr><td>Metro Train</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
       }
+
+
       var data = json["disruptions"]["metro_bus"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Metro Bus</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+        txt += "<tr><td>Metro Bus</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
       }
       var data = json["disruptions"]["metro_tram"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Metro Tram</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+        txt += "<tr><td>Metro Tram</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
       }
       var data = json["disruptions"]["regional_train"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Regional Train</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+        txt += "<tr><td>Regional Train</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
       }
       var data = json["disruptions"]["regional_bus"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Regional Bus</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+        txt += "<tr><td>Regional Bus</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
       }
       var data = json["disruptions"]["regional_coach"];
       for (var i = 0; i<data.length; i++) {
-        txt += "<tr><td>Regional Coach</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + data[i]["from_date"] + "</td><td>" + data[i]["to_date"] + "</td></tr>";
+        txt += "<tr><td>Regional Coach</td><td>"+data[i]["title"] + "</td><td>" + data[i]["description"] + "</td><td>" + data[i]["disruption_type"] + "</td><td>" + data[i]["disruption_status"] + "</td><td>" + NullRep(data[i]["from_date"]).replace(/T|Z/g, " ") + "</td><td>" + NullRep(data[i]["to_date"]).replace(/T|Z/g, " ") + "</td></tr>";
       }
 	  txt += "</tbody>";
+
+
+    $('#Table-Wrapper').hide() //Hiding the table initially
+    $('#StatusButtons').hide()
 	  $("#table1").append(txt);
-	  $('#table1').DataTable( {
-autoWidth: false,
+	  var dataTable = $('#table1').DataTable( {
+      autoWidth: false,
+  'columnDefs' : [
+    {
+      'targets' : [0, 3, 4],
+      'visible' : false
+    }
+  ],
     columns : [
         { width : '20px' },
         { width : '80px' },
         { width : '80px' },
-        { width : '20px' },        
         { width : '20px' },
-        { width : '25px' },   
-		{ width : '25px' }
+        { width : '20px' },
+        { width : '25px' },
+    { width : '25px' }
     ] ,
+      responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                        var data = row.data();
+                        return 'Details for '+data[0]+' '+data[1];
+                    }
+                } ),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                    tableClass: 'table'
+                } )
+            }
+        }
+
+    /*
         initComplete: function () {
             this.api().columns([0,3,4]).every( function () {
                 var column = this;
@@ -89,23 +140,98 @@ autoWidth: false,
                         var val = $.fn.dataTable.util.escapeRegex(
                             $(this).val()
                         );
- 
+
                         column
                             .search( val ? '^'+val+'$' : '', true, false )
                             .draw();
                     } );
- 
+
                 column.data().unique().sort().each( function ( d, j ) {
                     select.append( '<option value="'+d+'">'+d+'</option>' )
                 } );
             } );
-        }
+        }*/
     } );
-    });
-	
-	
 
-    
+    var LastStatus;
+
+    //Sets filter to Trains
+    $("#TrainButton").click(function() {
+      dataTable.columns(0).search("").draw();
+      dataTable.columns(0).search("Metro Train").draw();
+      if($("#Table-Wrapper").is(":visible")){
+        $("#Table-Wrapper").toggle('slow');
+      }
+      $("#StatusButtons").toggle('slow');
+    });
+
+    //sets filter for trams
+    $("#TramButton").click(function() {
+      dataTable.columns(0).search("").draw();
+      dataTable.columns(0).search("Metro Tram").draw();
+      if($("#Table-Wrapper").is(":visible")){
+        $("#Table-Wrapper").toggle('slow');
+      }
+      $("#StatusButtons").toggle('slow');
+    });
+
+    //sets filter for buses
+    $("#BusButton").click(function() {
+      dataTable.columns(0).search("").draw();
+      dataTable.columns(0).search("Metro Bus").draw();
+      if($("#Table-Wrapper").is(":visible")){
+        $("#Table-Wrapper").toggle('slow');
+      }
+      $("#StatusButtons").toggle('slow');
+    });
+
+    //sets filter to planned works
+    $("#PlannedButton").click(function() {
+
+      if($("#Table-Wrapper").is(":visible") && LastStatus == "Current"){
+        $("#Table-Wrapper").toggle('slow');
+        dataTable.columns(4).search('').draw();
+        LastStatus = "Planned";
+        dataTable.columns(4).search("Planned").draw();
+        $("#Table-Wrapper").toggle('slow');
+      }
+      else if($("#Table-Wrapper").is(":visible")) {
+        LastStatus = '';
+        $("#Table-Wrapper").toggle('slow');
+      }
+      else{
+        dataTable.columns(4).search("Planned").draw();
+        LastStatus = "Planned";
+        $("#Table-Wrapper").toggle('slow');
+      }
+
+
+    });
+
+    //sets filter to current works
+    $("#CurrentButton").click(function() {
+
+      if($("#Table-Wrapper").is(":visible") && LastStatus == "Planned"){
+        $("#Table-Wrapper").toggle('slow');
+        dataTable.columns(4).search('').draw();
+        LastStatus = "Current";
+        dataTable.columns(4).search("Current").draw();
+        $("#Table-Wrapper").toggle('slow');
+      }
+      else if($("#Table-Wrapper").is(":visible")) {
+        LastStatus = '';
+        $("#Table-Wrapper").toggle('slow');
+      }
+      else{
+        dataTable.columns(4).search("Current").draw();
+        LastStatus = "Current";
+        $("#Table-Wrapper").toggle('slow');
+      }
+
+    });
+
+
+    });
 
 
 

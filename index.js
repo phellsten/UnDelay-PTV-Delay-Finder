@@ -19,11 +19,13 @@ app.use(bodyParser.json());
 
 app.post('/formsubmit', function(req, res) {
 
-    var location = req.body.location;
-    var description = req.body.description;
-    var selection = req.body.sel1;
-    var delaytype = req.body.delaytype;
-    var locationdata = req.body.locationdata;
+    var sanitize = require('mongo-sanitize');
+
+    var location = sanitize(req.body.location);
+    var description = sanitize(req.body.description);
+    var selection = sanitize(req.body.sel1);
+    var delaytype = sanitize(req.body.delaytype);
+    var locationdata = sanitize(req.body.locationdata);
 
 
 
@@ -113,6 +115,3 @@ app.get('/delay',function(req,res){
 app.listen(3000,function(req,res){
     console.log('Listening at port 3000');
 })
-
-
-
