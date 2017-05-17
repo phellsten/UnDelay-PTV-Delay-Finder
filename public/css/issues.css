@@ -36,6 +36,14 @@ table.dataTable tbody td {
     vertical-align: top;
 }
 
+table.dataTable thead tr {
+    color: white;
+	 text-align: center;
+}
+table.dataTable tfoot tr {
+    color: white;
+	 text-align: center;
+}
 
 div.TransportDiv{
     position: relative;
