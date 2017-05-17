@@ -160,3 +160,7 @@ input::-webkit-input-placeholder {
   -webkit-user-drag: none;
   max-height: 48px;
 }
+
+.div.profile-link{
+    color: #3686F2;
+}

@@ -20,7 +20,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <%if(user){%>
-            <li><a href="/profile" class = "profileLink"><%= user.local.username %></a></li>
+            <li><div class = "profile-link"><a href="/profile" class = "profileLink"><%= user.local.username %></a></div></li>
             <li><a href="/logout">Logout</a></li>
           <%}else{%>
             <li <%if(pageId==='login'){%>class="active"<%}%>><a href="/login">Login</a></li>
