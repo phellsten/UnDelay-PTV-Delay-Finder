@@ -76,7 +76,7 @@ module.exports = function(app, passport) {
 		res.redirect('/');
 	});
 
-  app.get('/delay',function(req,res){
+  app.get('/delay',loginBefore,function(req,res){
      res.render("index",{
          pageId:'delay',
          user : req.user
@@ -98,7 +98,7 @@ module.exports = function(app, passport) {
   var map = require('../map.js');
   app.use('/map', map);
 
-  app.post('/formsubmit',loginBefore, function(req, res) {
+  app.post('/formsubmit', function(req, res) {
 
       var sanitize = require('mongo-sanitize');
 
@@ -107,9 +107,6 @@ module.exports = function(app, passport) {
       var selection = sanitize(req.body.sel1);
       var delaytype = sanitize(req.body.delaytype);
       var locationdata = sanitize(req.body.locationdata);
-
-
-
       var MongoClient = require('mongodb').MongoClient
           , format = require('util').format;
 
