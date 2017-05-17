@@ -153,32 +153,71 @@
 
       //sets filter for trains
       $("#TrainButton").click(function() {
-        dataTable.columns(0).search("").draw();
-        dataTable.columns(0).search("Metro Train").draw();
-        if($("#Table-Wrapper").is(":visible")){
+
+        if($("#Table-Wrapper").is(":visible") && LastType != 'Metro Train'){
+          LastType = 'Metro Train';
+          $("#Table-Wrapper").toggle('fast');
+          dataTable.columns(0).search("").draw();
+          dataTable.columns(0).search(LastType).draw();
           $("#Table-Wrapper").toggle('fast');
         }
-        $("#StatusButtons").toggle('fast');
+        else if($("#Table-Wrapper").is(":visible"))
+        {
+          LastType = '';
+
+          $("#Table-Wrapper").toggle('fast');
+        }
+        else{
+          LastType = 'metro Train';
+          dataTable.columns(0).search(LastType).draw();
+          $("#StatusButtons").toggle('fast');
+        }
+
       });
 
       //sets filter for trams
       $("#TramButton").click(function() {
-        dataTable.columns(0).search("").draw();
-        dataTable.columns(0).search("Metro Tram").draw();
-        if($("#Table-Wrapper").is(":visible")){
+
+        if($("#Table-Wrapper").is(":visible") && LastType != 'Metro Tram'){
+          LastType = 'Metro Tram';
+          $("#Table-Wrapper").toggle('fast');
+          dataTable.columns(0).search("").draw();
+          dataTable.columns(0).search(LastType).draw();
           $("#Table-Wrapper").toggle('fast');
         }
-        $("#StatusButtons").toggle('fast');
+        else if($("#Table-Wrapper").is(":visible")){
+          LastType = '';
+          $("#Table-Wrapper").toggle('fast');
+        }
+        else{
+          LastType = 'Metro Tram';
+          dataTable.columns(0).search(LastType).draw();
+          $("#StatusButtons").toggle('fast');
+
+        }
+
       });
 
       //sets filter for buses
       $("#BusButton").click(function() {
-        dataTable.columns(0).search("").draw();
-        dataTable.columns(0).search("Metro Bus").draw();
-        if($("#Table-Wrapper").is(":visible")){
+
+        if($("#Table-Wrapper").is(":visible") && LastType != "Metro Bus"){
+          $("#Table-Wrapper").toggle('fast');
+          LastType = 'Metro Bus';
+          dataTable.columns(0).search("").draw();
+          dataTable.columns(0).search(LastType).draw();
           $("#Table-Wrapper").toggle('fast');
         }
-        $("#StatusButtons").toggle('fast');
+        else if($("#Table-Wrapper").is(":visible")){
+          LastType = '';
+          $("#Table-Wrapper").toggle('fast');
+        }
+        else{
+          LastType = 'Metro Bus';
+          dataTable.columns(0).search(LastType).draw();
+          $("#StatusButtons").toggle('fast');
+
+        }
       });
 
       //sets filter to planned works
